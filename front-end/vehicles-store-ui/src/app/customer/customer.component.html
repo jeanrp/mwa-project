@@ -1,0 +1,51 @@
+
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="FirstName" value="">
+    </mat-form-field><br><br>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="lastName" value="">
+    </mat-form-field><br><br>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="phoneNumber" value="">
+    </mat-form-field><br><br>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="birthDate" value="">
+    </mat-form-field><br><br>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="creationDate" value="">
+    </mat-form-field><br><br>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Email" value="">
+    </mat-form-field><br><br>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="password" value="">
+    </mat-form-field><br><br>
+    <mat-form-field>
+        <mat-label>Select the type</mat-label>
+        <mat-select [(value)]="selected">
+          <mat-option>None</mat-option>
+          <mat-option value="Customer">Customer</mat-option>
+          <mat-option value="Seller">Seller</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <p>You selected: {{selected}}</p><br><br>
+
+    <form class="example-form">
+      <h3>Address:</h3>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Street" value="">
+          </mat-form-field><br><br>
+          <mat-form-field class="example-full-width">
+              <input matInput placeholder="City" value="">
+            </mat-form-field><br><br>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="State" value="">
+              </mat-form-field><br><br>
+              <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Zip" value="">
+                </mat-form-field><br><br>
+      </form>
+    <button mat-raised-button color="primary">Primary</button>
+  </form>
+  
