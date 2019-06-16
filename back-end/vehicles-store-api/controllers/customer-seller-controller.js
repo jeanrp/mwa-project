@@ -2,42 +2,60 @@ let CustomerSeller = require('../models/customer-seller-model');
 
 var ObjectId = require('mongodb').ObjectID;
 
-exports.create = function (req, res) {
-    var product = new CustomerSeller(
-        {
-            name: req.body.name,
-            price: req.body.price
-        }
-    );
+exports.create = async function (req, res, next) {
+    try {
+        var customerSeller = new CustomerSeller(
+            {
+                _id: new ObjectId(),
+                ...req.body, 
+                birthDate: null,
+                creationDate: new Date(),
+                address: {
+                    _id: new ObjectId(),
+                    street: '',
+                    state: '',
+                    city: '',
+                    zipcode: ''
+                }
+            }
+        );
 
-    CustomerSeller.save(function (err) {
-        if (err) {
-            return next(err);
-        }
-        res.json('Product Created successfully')
-    })
+        console.log(customerSeller);
+        await customerSeller.save();
+
+        res.json("Success");
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
 };
 
-exports.details = function (req, res) {
-    console.log(req.params.id);
-    CustomerSeller.findById(req.params.id, function (err, product) {
-        console.log(err);
-        console.log(product)
-        if (err) return next(err);
-        res.json(product);
-    })
+exports.details = async function (req, res, next) {
+    try {
+        let result = await CustomerSeller.findById(req.params.id);
+        res.json(result);
+    } catch (error) {
+        console.log(error);
+        return next(err);
+    }
 };
 
-exports.update = function (req, res) {
-    CustomerSeller.findByIdAndUpdate(req.params.id, {$set: req.body}, function (err, product) {
-        if (err) return next(err);
+exports.update = async function (req, res, next) {
+    try {
+        await CustomerSeller.findByIdAndUpdate(req.params.id, { $set: req.body });
         res.json('Product udpated.');
-    });
+    } catch (error) {
+        console.log(error);
+        return next(err);
+    }
 };
 
-exports.delete = function (req, res) {
-    CustomerSeller.findByIdAndRemove(req.params.id, function (err) {
-        if (err) return next(err);
+exports.delete = async function (req, res, next) {
+    try {
+        await CustomerSeller.findByIdAndRemove(req.params.id)
         res.json('Deleted successfully!');
-    })
+    } catch (error) {
+        console.log(error);
+        return next(err);
+    }
 };

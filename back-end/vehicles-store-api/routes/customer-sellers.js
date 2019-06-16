@@ -4,7 +4,7 @@ var router = express.Router();
 // Require the controllers WHICH WE DID NOT CREATE YET!!
  var customerSeller = require('../controllers/customer-seller-controller');
 
-router.post('/create', customerSeller.create);
+router.post('/', customerSeller.create);
 
 router.get('/:id', customerSeller.details);
 
