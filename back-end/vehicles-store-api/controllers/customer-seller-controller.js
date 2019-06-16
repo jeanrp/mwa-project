@@ -1,9 +1,6 @@
 let CustomerSeller = require('../models/customer-seller-model');
 
-//Simple version, without validation or sanitation
-exports.test = function (req, res) {
-    res.send('Greetings from the Test controller!');
-};
+
 
 exports.create = function (req, res) {
     var product = new CustomerSeller(
@@ -17,27 +14,30 @@ exports.create = function (req, res) {
         if (err) {
             return next(err);
         }
-        res.send('Product Created successfully')
+        res.json('Product Created successfully')
     })
 };
 
 exports.details = function (req, res) {
+    console.log(req.params.id);
     CustomerSeller.findById(req.params.id, function (err, product) {
+        console.log(err);
+        console.log("HIHIHIHIHIHI")
         if (err) return next(err);
-        res.send(product);
+        res.json(product);
     })
 };
 
 exports.update = function (req, res) {
     CustomerSeller.findByIdAndUpdate(req.params.id, {$set: req.body}, function (err, product) {
         if (err) return next(err);
-        res.send('Product udpated.');
+        res.json('Product udpated.');
     });
 };
 
 exports.delete = function (req, res) {
     CustomerSeller.findByIdAndRemove(req.params.id, function (err) {
         if (err) return next(err);
-        res.send('Deleted successfully!');
+        res.json('Deleted successfully!');
     })
 };

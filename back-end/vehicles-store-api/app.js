@@ -1,6 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
-var indexRouter = require('./routes/customers');
+var customerSellersRoute = require('./routes/customer-sellers');
 var mongoose = require('mongoose');
 var app = express();
 
@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(function (req, res, next) {
   if (!DB) {
-    mongoose.connect(url, { useNewUrlParser: true, useCreateIndex: true });
+    mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true });
     mongoose.Promise = global.Promise;
     var db = mongoose.connection;
     db.on('connected', () => {
@@ -29,8 +29,7 @@ app.use(function (req, res, next) {
 });
 
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/customers-sellers/', customerSellersRoute); 
 
 
 // catch 404 and forward to error handler
