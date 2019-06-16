@@ -5,9 +5,6 @@ import { AppComponent } from './app.component';
 import { CustomerComponent } from './customer/customer.component';
 import {HttpModule} from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { MatInputModule } from '@angular/material/input'
-import {MatSelectModule} from '@angular/material/select';
-import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -19,10 +16,7 @@ import {MatButtonModule} from '@angular/material/button';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    BrowserAnimationsModule,
-    MatInputModule,
-    MatSelectModule,
-    MatButtonModule
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

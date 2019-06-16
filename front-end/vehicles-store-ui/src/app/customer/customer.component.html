@@ -1,51 +1,112 @@
+<!-- <div style="background-color:black;height:200px;width:100%;"></div> -->
+<div class="container">
 
-  <form class="example-form">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="FirstName" value="">
-    </mat-form-field><br><br>
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="lastName" value="">
-    </mat-form-field><br><br>
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="phoneNumber" value="">
-    </mat-form-field><br><br>
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="birthDate" value="">
-    </mat-form-field><br><br>
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="creationDate" value="">
-    </mat-form-field><br><br>
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="Email" value="">
-    </mat-form-field><br><br>
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="password" value="">
-    </mat-form-field><br><br>
-    <mat-form-field>
-        <mat-label>Select the type</mat-label>
-        <mat-select [(value)]="selected">
-          <mat-option>None</mat-option>
-          <mat-option value="Customer">Customer</mat-option>
-          <mat-option value="Seller">Seller</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <p>You selected: {{selected}}</p><br><br>
+  <div class="row">
+    <div class="col-sm-4"></div>
 
-    <form class="example-form">
-      <h3>Address:</h3>
-        <mat-form-field class="example-full-width">
-            <input matInput placeholder="Street" value="">
-          </mat-form-field><br><br>
-          <mat-form-field class="example-full-width">
-              <input matInput placeholder="City" value="">
-            </mat-form-field><br><br>
-            <mat-form-field class="example-full-width">
-                <input matInput placeholder="State" value="">
-              </mat-form-field><br><br>
-              <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Zip" value="">
-                </mat-form-field><br><br>
+    <div class="col-sm-8">
+      <form class="example-form">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="" class="control-label col-sm-4">First Name</label>
+            <div class="col-sm-12">
+              <input type="text" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="control-label col-sm-4">Last Name</label>
+            <div class="col-sm-12">
+              <input type="text" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="control-label col-sm-4">PhoneNumber</label>
+            <div class="col-sm-12">
+              <input type="text" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="control-label col-sm-4">Email</label>
+            <div class="col-sm-12">
+              <input type="text" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="control-label col-sm-4">Password</label>
+            <div class="col-sm-12">
+              <input type="text" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="control-label col-sm-4">Type</label>
+            <div class="col-sm-12">
+              <select name="" id="" class="form-control">
+                <option value="seller">Seller</option>
+                <option value="customer">Customer</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group"><button class="btn btn-primary btn-block" style="width:90%;margin-left:5%">Sign up</button></div>
+        </div>
       </form>
-    <button mat-raised-button color="primary">Primary</button>
-  </form>
-  
+    </div>
+  </div>
+
+</div>
+<!-- 
+<mat-grid-list cols="2">
+    <mat-grid-tile>
+      <div class="form-container-first">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="FirstName" value="">
+        </mat-form-field><br><br>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="lastName" value="">
+        </mat-form-field><br><br>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="phoneNumber" value="">
+        </mat-form-field><br><br>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="birthDate" value="">
+        </mat-form-field><br><br>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="creationDate" value="">
+        </mat-form-field><br><br>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Email" value="">
+        </mat-form-field><br><br>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="password" value="">
+        </mat-form-field><br><br>
+        <mat-form-field>
+          <mat-label>Select the type</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option>None</mat-option>
+            <mat-option value="Customer">Customer</mat-option>
+            <mat-option value="Seller">Seller</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+       
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="form-container-second">
+        <h3>Address:</h3>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Street" value="">
+        </mat-form-field><br><br>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="City" value="">
+        </mat-form-field><br><br>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="State" value="">
+        </mat-form-field><br><br>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Zip" value="">
+        </mat-form-field><br><br>
+        <button mat-raised-button color="primary">Save</button>
+      </div>
+     
+    </mat-grid-tile>
+  </mat-grid-list> -->
