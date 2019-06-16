@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerModel} from '../CustomerModel'
+import { CustomerModel} from '../models/CustomerModel'
 import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import { CustomerService } from '../customer.service';
+import { CustomerSellerService } from '../services/customer-seller.service';
 
 @Component({
   selector: 'app-edit-customer',
@@ -15,7 +15,7 @@ export class EditCustomerComponent implements OnInit {
   editForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private customerService: CustomerService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private customerService: CustomerSellerService) { }
 
   ngOnInit() {
     let customerId = localStorage.getItem("_Id");

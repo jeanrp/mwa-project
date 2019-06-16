@@ -1,11 +1,5 @@
 import { Injectable } from '@angular/core'; 
  
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/observable/throw';
-import { RequestOptions } from 'http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -17,7 +11,7 @@ export abstract class BaseService {
 
   public Token: string = "";
 
-  protected UrlServiceV1: string = "api/v1/";
+  protected baseUrl: string = "http://localhost:3000/";
 
   protected async extractData(response: Response) {
       let body = await response.json();
@@ -37,7 +31,7 @@ export abstract class BaseService {
       } else {
           errMsg = error.message ? error.message : error.toString();
       }
-      
+
       return Observable.throw(error);
   }
 }

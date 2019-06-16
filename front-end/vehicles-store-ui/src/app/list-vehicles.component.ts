@@ -3,9 +3,8 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-list-vehicles',
   template: `
-    <p>
-      list-vehicles works!
-    </p>
+    <a [routerLink]="[ '/register' ]">Add Customer/Seller</a>  <br />
+    <a [routerLink]="[ '/edit-profile']">Edit Customer/Seller</a>     <br />
   `,
   styles: []
 })

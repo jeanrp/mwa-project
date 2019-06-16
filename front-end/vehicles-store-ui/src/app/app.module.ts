@@ -12,6 +12,7 @@ import { CustomerSellerService } from './services/customer-seller.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NavComponent } from './nav.component';
 import { AuthorizationInterceptor } from './interceptors/authorization.interceptor';
+import { myRoutes } from './app.route';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { AuthorizationInterceptor } from './interceptors/authorization.intercept
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    myRoutes
   ],
   providers: [CustomerSellerService, { provide: HTTP_INTERCEPTORS, useClass: AuthorizationInterceptor, multi: true}],
   bootstrap: [AppComponent]

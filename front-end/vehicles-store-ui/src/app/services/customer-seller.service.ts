@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
-import { HttpClient } from 'selenium-webdriver/http';
+ 
+import { CustomerModel } from '../models/CustomerModel';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
@@ -10,6 +12,26 @@ export class CustomerSellerService extends BaseService {
 
   constructor(private http: HttpClient) {
     super();
+  }
+
+  getAllCustomer() {
+    return this.http.get<CustomerModel[]>(this.baseUrl + 'customer-sellers');
+  }
+
+  getCustomerById(id: string) {
+    return this.http.get<CustomerModel>(this.baseUrl + 'customer-sellers' + '/' + id);
+  }
+
+  addCustomer(customer: CustomerModel) {
+    return this.http.post(this.baseUrl + 'customer-sellers', customer);
+  }
+
+  // deleteCustomer(id: string) {
+  //   return this.http.delete(this.baseUrl + 'Products' + '/' + id);
+  // }
+
+  updateCustomer(customer: CustomerModel) {
+    return this.http.put(this.baseUrl + 'customer-sellers' + '/' + customer._id, customer);
   }
 
   //   createCustomerSeller(empresa: Empresa): Observable<Empresa> {
