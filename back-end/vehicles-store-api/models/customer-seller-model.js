@@ -30,7 +30,7 @@ var customerSellerSchema = new mongoose.Schema({
                 interestType: { type: String },
                 category: { type: String },
                 vin: { type: String },
-                odometer: { type: String },
+                odometer: { type: Number },
                 model: { type: String },
                 brand: { type: String },
                 condition: { type: String },
@@ -60,7 +60,7 @@ var customerSellerSchema = new mongoose.Schema({
 
 });
 
-module.exports = mongoose.model("CustomerSeller", customerSellerSchema);
+module.exports = mongoose.model("CustomerSeller", customerSellerSchema, "customers_sellers");
 
 
 
