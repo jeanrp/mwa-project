@@ -1,6 +1,6 @@
 let CustomerSeller = require('../models/customer-seller-model');
 
-
+var ObjectId = require('mongodb').ObjectID;
 
 exports.create = function (req, res) {
     var product = new CustomerSeller(
@@ -22,7 +22,7 @@ exports.details = function (req, res) {
     console.log(req.params.id);
     CustomerSeller.findById(req.params.id, function (err, product) {
         console.log(err);
-        console.log("HIHIHIHIHIHI")
+        console.log(product)
         if (err) return next(err);
         res.json(product);
     })
