@@ -15,15 +15,15 @@ export class CustomerSellerService extends BaseService {
   }
 
   getAllCustomer() {
-    return this.http.get<CustomerModel[]>(this.baseUrl + 'customer-sellers');
+    return this.http.get<CustomerModel[]>(this.baseUrl + 'customers-sellers');
   }
 
   getCustomerById(id: string) {
-    return this.http.get<CustomerModel>(this.baseUrl + 'customer-sellers' + '/' + id);
+    return this.http.get<CustomerModel>(this.baseUrl + 'customers-sellers' + '/' + id);
   }
 
   addCustomer(customer: CustomerModel) {
-    return this.http.post(this.baseUrl + 'customer-sellers', customer);
+    return this.http.post(this.baseUrl + 'customers-sellers', customer);
   }
 
   // deleteCustomer(id: string) {
@@ -31,7 +31,7 @@ export class CustomerSellerService extends BaseService {
   // }
 
   updateCustomer(customer: CustomerModel) {
-    return this.http.put(this.baseUrl + 'customer-sellers' + '/' + customer._id, customer);
+    return this.http.put(this.baseUrl + 'customers-sellers' + '/' + customer._id, customer);
   }
 
   //   createCustomerSeller(empresa: Empresa): Observable<Empresa> {

@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var customerSellersRoute = require('./routes/customer-sellers');
 var mongoose = require('mongoose'); 
+var cors = require('cors')
 var app = express();
 
 const uri = "mongodb+srv://admin:admin@vehiclesstore-fxe0j.mongodb.net/VehiclesStore?retryWrites=true&w=majority";
@@ -10,6 +11,8 @@ DB = false;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use(cors());
 
 app.use(function (req, res, next) {
   if (!DB) { 
