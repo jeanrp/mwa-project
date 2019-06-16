@@ -2,7 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { FormBuilder,FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { Router } from "@angular/router";
-import {CustomerService} from "../customer.service"
+import {CustomerSellerService} from "../services/customer-seller.service"
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
@@ -10,7 +10,7 @@ import {CustomerService} from "../customer.service"
 })
 export class CustomerComponent implements OnInit{
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private customerService: CustomerService) { } 
+  constructor(private formBuilder: FormBuilder, private router: Router, private customerService: CustomerSellerService) { } 
    Repdata;  
    valbutton ="Save";  
    addForm: FormGroup;
