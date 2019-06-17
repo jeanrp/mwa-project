@@ -42,7 +42,9 @@ exports.details = async function (req, res, next) {
 
 exports.update = async function (req, res, next) {
     try {
-        await CustomerSeller.findByIdAndUpdate(req.params.id, { $set: req.body });
+        let customerSeller = req.body;
+        customerSeller.birthDate = new Date(customerSeller.birthDate); 
+        await CustomerSeller.findByIdAndUpdate(req.params.id, { $set: customerSeller });
         res.json('Product udpated.');
     } catch (error) {
         console.log(error);

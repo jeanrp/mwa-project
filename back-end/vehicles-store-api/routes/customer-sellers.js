@@ -8,7 +8,7 @@ router.post('/', customerSeller.create);
 
 router.get('/:id', customerSeller.details);
 
-router.patch('/:id', customerSeller.update);
+router.put('/:id', customerSeller.update);
 
 router.delete('/:id', customerSeller.delete);
 
