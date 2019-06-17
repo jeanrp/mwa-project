@@ -15,13 +15,13 @@ import { LoginService } from './services/login.service';
         <div class="collapse navbar-collapse" id="navbarText">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" *ngIf="!loginService.isUserLoggedIn" [routerLink]="[ '/register' ]">Sign up <span class="sr-only">(current)</span></a>
+              <a class="nav-link" *ngIf="!loginService.isUserLoggedIn()" [routerLink]="[ '/register' ]">Sign up <span class="sr-only">(current)</span></a>
             </li> 
             <li class="nav-item">
-              <a class="nav-link" *ngIf="!loginService.isUserLoggedIn" [routerLink]="[ '/login' ]">Sign in</a>
+              <a class="nav-link" *ngIf="!loginService.isUserLoggedIn()" [routerLink]="[ '/login' ]">Sign in</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" *ngIf="loginService.isUserLoggedIn" [routerLink]="[ '/logout' ]">Sign out</a>
+              <a class="nav-link" *ngIf="loginService.isUserLoggedIn()" [routerLink]="[ '/logout' ]">Sign out</a>
             </li>
           </ul>
           
