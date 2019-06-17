@@ -17,6 +17,7 @@ import { LoginComponent } from './login.component';
 import { ToastrModule } from 'ngx-toastr';
 import { FooterComponent } from './footer.component';
 import { LogoutComponent } from './logout.component';
+import { ProposalComponent } from './proposal/proposal.component';
 import { LoginService } from './services/login.service';
 
 import {AidComponent} from './ad/aid.component';
@@ -35,6 +36,8 @@ import { FileSelectDirective } from 'ng2-file-upload';
     LogoutComponent,
     AidComponent,
     FileSelectDirective,
+    LogoutComponent,
+    ProposalComponent
   ],
   imports: [
     BrowserModule,
