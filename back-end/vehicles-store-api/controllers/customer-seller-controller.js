@@ -19,8 +19,7 @@ exports.create = async function (req, res, next) {
                 }
             }
         );
-
-        console.log(customerSeller);
+ 
         await customerSeller.save();
 
         res.json("Success");

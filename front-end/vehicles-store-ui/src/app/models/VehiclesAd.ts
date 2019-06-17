@@ -1,16 +1,22 @@
 export class VehiclesAd {
   _id: string;
-  category: String;
-  vin: String;
-  odometer: String;
-  model: String;
-  brand: String;
-  condition: String;
-  fuel: String;
-  color: String;
-  transmission: String;
-  year: String;
-  description: String;
-  price: String;
-  title: String;
+  interestType: string;
+  category: string;
+  vin: string;
+  odometer: number;
+  model: string;
+  brand: string;
+  condition: string;
+  fuel: string;
+  color: string;
+  transmission: string;
+  year: number;
+  description: string;
+  price: string;
+  title: string;
+  images: string[]; 
+  creationDate: Date;
+  sellDate: Date;
+  customer_seller_id: string
 }
+ 

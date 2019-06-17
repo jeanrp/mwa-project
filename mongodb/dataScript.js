@@ -243,8 +243,7 @@ function generateDocument(i) {
             "$oid": id_customer_seller
         },
         "firstName": faker.name.firstName(),
-        "lastName": faker.name.lastName(),
-        "type": types[i % 2],
+        "lastName": faker.name.lastName(), 
         "phone": faker.phone.phoneNumber(),
         "email": faker.internet.email(),
         "password": faker.internet.password(),
@@ -264,7 +263,7 @@ function generateDocument(i) {
                 "_id": {
                     "$oid": vehicles_ads_id
                 },
-                "interestType": "Lorem",
+                "interestType": types[i % 2],
                 "category": "Lorem",
                 "vin": faker.random.number() + "",
                 "odometer": faker.random.number(({min: 0, max: 300000})),

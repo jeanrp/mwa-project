@@ -73,9 +73,8 @@ export class LoginComponent implements OnInit {
     this.loginForm.reset();
     let res = await response;
     localStorage.setItem('token', res.result.token);
-    localStorage.setItem('user', JSON.stringify(res.result.data));
-    console.log(res.result);
-    this.toastr.success('Login efetuado com Sucesso!', 'Bem vindo!!!');
+    localStorage.setItem('user', JSON.stringify(res.result.data)); 
+    this.toastr.success('You are logged in!', 'Welcome!!!!');
     this.router.navigate(['']);
   }
 
