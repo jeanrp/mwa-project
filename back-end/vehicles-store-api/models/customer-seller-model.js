@@ -8,8 +8,7 @@ const Number = mongoose.Schema.Types.Number;
 var customerSellerSchema = new mongoose.Schema({
     _id: { type: ObjectId },
     firstName: { type: String },
-    lastName: { type: String },
-    type: { type: String },
+    lastName: { type: String }, 
     phone: { type: String },
     email: { type: String },
     password: { type: String },
@@ -22,7 +21,6 @@ var customerSellerSchema = new mongoose.Schema({
         city: { type: String },
         zipcode: { type: String }
     },
-
     vehicles_ads: {
         type: Array, "default": [
             {

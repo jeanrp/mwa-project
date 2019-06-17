@@ -23,8 +23,7 @@ exports.login = async function (req, res, next) {
                     data: {
                         _id: result._id,
                         email: result.email,
-                        phone: result.phone,
-                        type: result.type,
+                        phone: result.phone
                     }
                 }
             });

@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {BaseService} from './base.service';
-import {CustomerModel} from '../models/CustomerModel';
-import {VehiclesAd} from '../models/VehiclesAd';
-import {HttpClient} from '@angular/common/http';
-import {UserLoginModel} from '../models/UserLoginModel';
+import { Injectable } from '@angular/core';
+import { BaseService } from './base.service';
+import { CustomerModel } from '../models/CustomerModel';
+import { VehiclesAd } from '../models/VehiclesAd';
+import { HttpClient } from '@angular/common/http';
+import { UserLoginModel } from '../models/UserLoginModel';
 
 
 @Injectable({
@@ -17,12 +17,11 @@ export class VehiclesAdsService extends BaseService {
   }
 
   getAllAds() {
-    return this.http.get<CustomerModel[]>(this.baseUrl + 'vehicles-ads');
+    return this.http.get<VehiclesAd[]>(this.baseUrl + 'vehicles-ads');
   }
-
-  getCustomerById(id: string) {
-    const user = JSON.parse(localStorage.getItem('user'));
-    return this.http.get<CustomerModel>(this.baseUrl + 'vehicles-ads' + '/' + user._id);
+  
+  getVehicleById(id: string) {
+    return this.http.get<VehiclesAd>(this.baseUrl + 'vehicles-ads' + '/' + id);
   }
 
   addVehicleAd(vehicleAd: VehiclesAd) {

@@ -22,8 +22,7 @@ app.use(function (req, res, next) {
   if (!DB) { 
     mongoose.connect(uri, { keepAlive: 1 });
     mongoose.Promise = global.Promise;
-    var db = mongoose.connection;
-    console.log(db);
+    var db = mongoose.connection; 
     
     mongoose.set('debug', true);
     
@@ -44,7 +43,6 @@ app.use(function (req, res, next) {
 
 app.use('/customers-sellers', customerSellersRoute);
 app.use('/vehicles-ads', vehiclesAdsRouter);
-
 app.use('/authentication', loginRoute);
 
 // catch 404 and forward to error handler
