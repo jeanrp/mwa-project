@@ -4,26 +4,14 @@ var ObjectId = require('mongodb').ObjectID;
 
 exports.create = async function (req, res, next) {
     try {
-        var customerSeller = new CustomerSeller(
-            {
-                _id: new ObjectId(),
-                ...req.body, 
-                birthDate: null,
-                creationDate: new Date(),
-                address: {
-                    _id: new ObjectId(),
-                    street: '',
-                    state: '',
-                    city: '',
-                    zipcode: ''
-                }
-            }
-        );
-
-        console.log(customerSeller);
-        await customerSeller.save();
-
-        res.json("Success");
+        let vehicle_ad = {
+            _id: new ObjectId(),
+            ...req.body
+        };
+        let customer = await CustomerSeller.findById(req.params.id);
+        await CustomerSeller.findByIdAndUpdate(req.params.id, {$push: {vehicles_ads: {vehicle_ad}}});
+        // await customerSeller.save();
+        res.json(vehicle_ad);
     } catch (error) {
         console.log(error);
         next(error);
@@ -42,9 +30,7 @@ exports.details = async function (req, res, next) {
 
 exports.update = async function (req, res, next) {
     try {
-        let customerSeller = req.body;
-        customerSeller.birthDate = new Date(customerSeller.birthDate); 
-        await CustomerSeller.findByIdAndUpdate(req.params.id, { $set: customerSeller });
+        await CustomerSeller.findByIdAndUpdate(req.params.id, {$set: req.body});
         res.json('Product udpated.');
     } catch (error) {
         console.log(error);
