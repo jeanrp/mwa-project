@@ -13,6 +13,7 @@ import {FileUploader, FileSelectDirective} from 'ng2-file-upload/ng2-file-upload
   styleUrls: ['./aid.component.css']
 })
 export class AidComponent implements OnInit {
+  private base64textString: String = "";
   image: string | ArrayBuffer;
   categories = ['bus', 'car', 'trailer', 'van', 'sedan'];
   transmission = ['manual', 'automatic', 'other'];
@@ -28,7 +29,6 @@ export class AidComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private vehiclesAdsService: VehiclesAdsService,
-    private cd: ChangeDetectorRef
   ) {
 
   }
@@ -48,7 +48,7 @@ export class AidComponent implements OnInit {
       description: ['', Validators.required],
       price: ['', Validators.required],
       title: ['', Validators.required],
-      images: ['']
+      images: [[]]
     });
   }
 
@@ -60,32 +60,34 @@ export class AidComponent implements OnInit {
       this.vehiclesAdsService.addVehicleAd(this.addForm.value)
         .subscribe(data => {
           console.log(data);
-          this.router.navigate(['']);
+          // this.router.navigate(['']);
         });
       return;
     }
   }
 
-  onFileChange(event, field) {
-    if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      console.log(file);
-      // just checking if it is an image, ignore if you want
-      if (!file.type.startsWith('image')) {
-        this.addForm.get(field).setErrors({
-          required: true
-        });
-        this.cd.markForCheck();
-      } else {
-        console.log(file);
-        // unlike most tutorials, i am using the actual Blob/file object instead of the data-url
-        this.addForm.patchValue({
-          [field]: file
-        });
-        // need to run CD since file load runs outside of zone
-        this.cd.markForCheck();
-      }
+
+  handleFileSelect(evt) {
+    const files = evt.target.files;
+    const file = files[0];
+
+    if (files && file) {
+      const reader = new FileReader();
+      reader.onload = this._handleReaderLoaded.bind(this);
+      reader.readAsBinaryString(file);
     }
   }
+
+  _handleReaderLoaded(readerEvt) {
+    const binaryString = readerEvt.target.result;
+    this.base64textString = btoa(binaryString);
+
+    // console.log(btoa(binaryString));
+    this.addForm.value.images.push(btoa(binaryString));
+    console.log(this.addForm.value);
+    console.log(typeof this.addForm.value);
+  }
+
+
 }
 

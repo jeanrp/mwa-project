@@ -104,9 +104,8 @@
 
   <div class="form-group">
     <label>Image:</label>
-    <input type="file" formControlName="images" (onchange)="onFileChange($event, 'image')"/>
+    <input type="file" id="filePicker" (change)="handleFileSelect($event)">
   </div>
-
 
 
   <button class="btn btn-info btn-block" type="submit">Confirm</button>
