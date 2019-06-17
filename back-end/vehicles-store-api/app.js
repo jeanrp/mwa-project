@@ -2,15 +2,14 @@ var createError = require('http-errors');
 var express = require('express');
 var customerSellersRoute = require('./routes/customer-sellers');
 var loginRoute = require('./routes/login');
-var mongoose = require('mongoose'); 
+var mongoose = require('mongoose');
 var cors = require('cors')
 var config = require('./config');
 
 var app = express();
 
-const uri = `mongodb+srv://${config.userDb}:${config.passwordDb}@vehiclesstore-fxe0j.mongodb.net/${config.dataBaseName}?retryWrites=true&w=majority`;
+const uri = "mongodb+srv://admin:admin@vehiclesstore-fxe0j.mongodb.net/VehiclesStore?retryWrites=true&w=majority";
 
-console.log(uri);
 DB = false;
 
 app.use(express.json());
@@ -36,11 +35,15 @@ app.use(function (req, res, next) {
       console.log('MongoDB connection error:');
     });
 
+
   }
   next();
 });
 
+
 app.use('/customers-sellers', customerSellersRoute);
+app.use('/vehicles-ads', vehiclesAdsRouter);
+
 app.use('/authentication', loginRoute);
 
 // catch 404 and forward to error handler

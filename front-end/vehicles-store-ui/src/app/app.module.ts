@@ -18,6 +18,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { FooterComponent } from './footer.component';
 import { LogoutComponent } from './logout.component';
 
+import {AidComponent} from './ad/aid.component';
+import { FileSelectDirective } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,9 @@ import { LogoutComponent } from './logout.component';
     LoginComponent,
     FooterComponent,
     LogoutComponent
+    NavComponent,
+    AidComponent,
+    FileSelectDirective,
   ],
   imports: [
     BrowserModule,
