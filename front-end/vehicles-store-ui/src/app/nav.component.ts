@@ -20,6 +20,10 @@ import { LoginService } from './services/login.service';
             <li class="nav-item">
               <a class="nav-link" *ngIf="!loginService.isUserLoggedIn()" [routerLink]="[ '/login' ]">Sign in</a>
             </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" *ngIf="loginService.isUserLoggedIn()" [routerLink]="[ '/add-ad' ]">Create a new Post</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" *ngIf="loginService.isUserLoggedIn()" [routerLink]="[ '/logout' ]">Sign out</a>
             </li>

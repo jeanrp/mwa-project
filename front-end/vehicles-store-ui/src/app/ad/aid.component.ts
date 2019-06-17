@@ -2,8 +2,9 @@ import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Validators} from '@angular/forms';
 import {CustomerSellerService} from "../services/customer-seller.service";
+import {VehiclesAdsService} from '../services/vehicles-ads.service';
 import {Router} from "@angular/router";
-import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
+import {FileUploader, FileSelectDirective} from 'ng2-file-upload/ng2-file-upload';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class AidComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private customerService: CustomerSellerService,
+    private vehiclesAdsService: VehiclesAdsService,
     private cd: ChangeDetectorRef
   ) {
 
@@ -54,6 +55,15 @@ export class AidComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     console.log(this.addForm.value);
+    if (!this.addForm.valid) {
+      console.log('valid form');
+      this.vehiclesAdsService.addVehicleAd(this.addForm.value)
+        .subscribe(data => {
+          console.log(data);
+          this.router.navigate(['']);
+        });
+      return;
+    }
   }
 
   onFileChange(event, field) {
