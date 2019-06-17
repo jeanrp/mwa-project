@@ -24,7 +24,7 @@ export class LoginService extends BaseService {
     return response;
   }
 
-  isUserLoggedIn(){
+  isUserLoggedIn(){ 
     let user = localStorage.getItem('user');
 
     return !(user === null);
