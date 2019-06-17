@@ -1,0 +1,113 @@
+<script src="aid.component.ts"></script>
+<form class="text-center border border-light p-5" [formGroup]="addForm" (ngSubmit)="onSubmit()">
+  <p class="h4 mb-4">Register a new AD</p>
+
+  <div class="form-group">
+    <select class="custom-select" formControlName="category">
+      <option value="" disabled>Choose your category</option>
+      <option *ngFor="let category of categories" [ngValue]="category">{{category}}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Vin:</label>
+    <input type="text" formControlName="vin" placeholder="vin" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && this.addForm.controls.vin }">
+    <div *ngIf="submitted && this.addForm.controls.vin.errors">
+      <div *ngIf="this.addForm.controls.vin.errors.required">Vin is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Title:</label>
+    <input type="text" formControlName="title" placeholder="title" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && this.addForm.controls.title }">
+    <div *ngIf="submitted && this.addForm.controls.title.errors">
+      <div *ngIf="this.addForm.controls.title.errors.required">Title is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <textarea type="text" formControlName="description" placeholder="description" class="form-control"
+              id="description"
+              [ngClass]="{ 'is-invalid': submitted && this.addForm.controls.title }"> </textarea>
+    <div *ngIf="submitted && this.addForm.controls.title.errors">
+      <div *ngIf="this.addForm.controls.title.errors.required">Title is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <select class="custom-select" formControlName="transmission">
+      <option value="" disabled>Choose your transmission:</option>
+      <option *ngFor="let trans of transmission" [ngValue]="trans">{{trans}}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <select class="custom-select" formControlName="condition">
+      <option value="" disabled>Choose your condition:</option>
+      <option *ngFor="let condition of conditions" [ngValue]="condition">{{condition}}</option>
+    </select>
+  </div>
+
+
+  <div class="form-group">
+    <select class="custom-select" formControlName="fuel">
+      <option value="" disabled>Choose your fuel:</option>
+      <option *ngFor="let fuel of fuels" [ngValue]="fuel">{{fuel}}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <select class="custom-select" formControlName="color">
+      <option value="" disabled>Choose your color</option>
+      <option *ngFor="let color of colors" [ngValue]="color">{{color}}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Odometer:</label>
+    <input type="text" formControlName="odometer" placeholder="odometer" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && this.addForm.controls.odometer }">
+    <div *ngIf="submitted && this.addForm.controls.odometer.errors">
+      <div *ngIf="this.addForm.controls.odometer.errors.required">Odometer is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Price:</label>
+    <input type="number" formControlName="price" placeholder="price" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && this.addForm.controls.price }">
+    <div *ngIf="submitted && this.addForm.controls.price.errors">
+      <div *ngIf="this.addForm.controls.price.errors.required">Price is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Model:</label>
+    <input type="text" formControlName="model" placeholder="model" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && this.addForm.controls.model }">
+    <div *ngIf="submitted && this.addForm.controls.model.errors">
+      <div *ngIf="this.addForm.controls.model.errors.required">model is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Brand:</label>
+    <input type="text" formControlName="brand" placeholder="brand" class="form-control"
+           [ngClass]="{ 'is-invalid': submitted && this.addForm.controls.brand }">
+    <div *ngIf="submitted && this.addForm.controls.brand.errors">
+      <div *ngIf="this.addForm.controls.brand.errors.required">brand is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Image:</label>
+    <input type="file" formControlName="images" (onchange)="onFileChange($event, 'image')"/>
+  </div>
+
+
+
+  <button class="btn btn-info btn-block" type="submit">Confirm</button>
+</form>
