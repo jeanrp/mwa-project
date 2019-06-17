@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'; 
  
-import { Observable } from 'rxjs';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +14,12 @@ export abstract class BaseService {
   protected baseUrl: string = "http://localhost:3000/";
 
   protected async extractData(response: Response) {
-      let body = await response.json();
-      return body.data || {};
+      let body = await response;
+      return body || {};
   }
 
   public getUser() {
-      return JSON.parse(localStorage.getItem('eio.user'));
+      return JSON.parse(localStorage.getItem('user'));
   }
 
   protected async serviceError(error: Response | any) {
@@ -32,6 +32,6 @@ export abstract class BaseService {
           errMsg = error.message ? error.message : error.toString();
       }
 
-      return Observable.throw(error);
+      return throwError(error);
   }
 }
