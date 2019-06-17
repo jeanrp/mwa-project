@@ -16,7 +16,6 @@ export class CustomerComponent implements OnInit {
   customerSellerForm: FormGroup;
   submitted = false;
 
-
   ngOnInit() {
     this.customerSellerForm = this.formBuilder.group({
       firstName: ['', Validators.required],

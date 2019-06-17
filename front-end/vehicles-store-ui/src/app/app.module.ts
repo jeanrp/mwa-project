@@ -13,6 +13,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NavComponent } from './nav.component';
 import { AuthorizationInterceptor } from './interceptors/authorization.interceptor';
 import { myRoutes } from './app.route';
+import { LoginComponent } from './login.component';
+import { ToastrModule } from 'ngx-toastr';
+import { FooterComponent } from './footer.component';
+import { LogoutComponent } from './logout.component';
 
 
 @NgModule({
@@ -22,7 +26,10 @@ import { myRoutes } from './app.route';
     EditCustomerComponent,
     ErrorComponent,
     ListVehiclesComponent,
-    NavComponent
+    NavComponent,
+    LoginComponent,
+    FooterComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +37,10 @@ import { myRoutes } from './app.route';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      preventDuplicates: true
+    }),
     myRoutes
   ],
   providers: [CustomerSellerService, { provide: HTTP_INTERCEPTORS, useClass: AuthorizationInterceptor, multi: true}],

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
- 
+
 import { CustomerModel } from '../models/CustomerModel';
 import { HttpClient } from '@angular/common/http';
+import { UserLoginModel } from '../models/UserLoginModel';
 
 
 @Injectable({
@@ -12,7 +13,8 @@ export class CustomerSellerService extends BaseService {
 
   constructor(private http: HttpClient) {
     super();
-  }
+  } 
+  
 
   getAllCustomer() {
     return this.http.get<CustomerModel[]>(this.baseUrl + 'customers-sellers');
