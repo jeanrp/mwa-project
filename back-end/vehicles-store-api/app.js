@@ -1,6 +1,7 @@
 var createError = require('http-errors');
 var express = require('express');
 var customerSellersRoute = require('./routes/customer-sellers');
+var vehiclesAdsRouter = require('./routes/vehicles-ads');
 var loginRoute = require('./routes/login');
 var mongoose = require('mongoose');
 var cors = require('cors')
