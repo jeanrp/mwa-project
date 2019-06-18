@@ -22,6 +22,7 @@ import { LoginService } from './services/login.service';
 
 import {AidComponent} from './ad/aid.component';
 import { FileSelectDirective } from 'ng2-file-upload';
+import { InteresingVehiclesComponent } from './interesing-vehicles/interesing-vehicles.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { FileSelectDirective } from 'ng2-file-upload';
     AidComponent,
     FileSelectDirective,
     LogoutComponent,
-    ProposalComponent
+    ProposalComponent,
+    InteresingVehiclesComponent
   ],
   imports: [
     BrowserModule,
