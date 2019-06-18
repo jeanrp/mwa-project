@@ -32,6 +32,8 @@ import { VehicleInformationComponent } from './vehicle-information.component';
 import { PhonePipe } from './phone.pipe';
 import { StrReplacePipe } from './str-replace.pipe';
 import { ListAdsComponent } from './list-ads/list-ads.component';
+import { VehiclesAdsService } from './services/vehicles-ads.service';
+import { ProposalService } from './services/proposal.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,7 @@ import { ListAdsComponent } from './list-ads/list-ads.component';
     LogoutComponent,
     ProposalComponent,
     VehicleDetailsComponent,
-    ListAdsComponent
+    ListAdsComponent,
     VehicleDetailsComponent,
     InteresingVehiclesComponent,
     SendProposalFormComponent,
@@ -71,7 +73,7 @@ import { ListAdsComponent } from './list-ads/list-ads.component';
     }),
     myRoutes
   ],
-  providers: [CustomerSellerService, LoginService, { provide: HTTP_INTERCEPTORS, useClass: AuthorizationInterceptor, multi: true}],
+  providers: [VehiclesAdsService, ProposalService, CustomerSellerService, LoginService, { provide: HTTP_INTERCEPTORS, useClass: AuthorizationInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

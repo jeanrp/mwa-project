@@ -7,6 +7,7 @@ var uploadRouter = require('./routes/uploadFiles');
 var mongoose = require('mongoose');
 var cors = require('cors');
 var multer = require('multer');
+var proposalRoute = require('./routes/proposals')
 
 var config = require('./config');
 

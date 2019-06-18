@@ -4,19 +4,14 @@ var ObjectId = require('mongodb').ObjectID;
 
 exports.create = async function (req, res, next) {
     try {
+
+        // console.log("HEY IM HERE")
         var customerSeller = new CustomerSeller(
             {
                 _id: new ObjectId(),
                 ...req.body, 
                 birthDate: null,
-                creationDate: new Date(),
-                address: {
-                    _id: new ObjectId(),
-                    street: '',
-                    state: '',
-                    city: '',
-                    zipcode: ''
-                }
+                creationDate: new Date()
             }
         );
  
@@ -24,7 +19,7 @@ exports.create = async function (req, res, next) {
 
         res.json("Success");
     } catch (error) {
-        console.log(error);
+        console.log("hi");
         next(error);
     }
 };

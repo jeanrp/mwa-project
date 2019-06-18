@@ -3,6 +3,7 @@ import { CustomerModel} from '../models/CustomerModel'
 import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { CustomerSellerService } from '../services/customer-seller.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-customer',
@@ -15,7 +16,7 @@ export class EditCustomerComponent implements OnInit {
   editForm: FormGroup;
   submitted = false;
  customerId :string;
-  constructor(private formBuilder: FormBuilder, private router: Router, private customerService: CustomerSellerService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private customerService: CustomerSellerService, private toastrService : ToastrService) { }
 
   ngOnInit() {
     let value = localStorage.getItem('user');
@@ -49,8 +50,11 @@ export class EditCustomerComponent implements OnInit {
       customerSeller._id = this.customerId;
       this.customerService.updateCustomer(customerSeller)
       .subscribe( data => {
-        console.log(data);
+        this.toastrService.success("Your profile has been successfully updated!");
         this.router.navigate(['']);
+      },
+      error=>{
+        console.log(error)
       });
     }
   }

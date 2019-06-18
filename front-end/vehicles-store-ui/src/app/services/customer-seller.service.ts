@@ -28,6 +28,7 @@ export class CustomerSellerService extends BaseService {
   }
 
   addCustomer(customer: CustomerModel) {
+    console.log(customer);
     return this.http.post(this.baseUrl + 'customers-sellers', customer);
   }
 
