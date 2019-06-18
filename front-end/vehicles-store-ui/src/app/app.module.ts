@@ -31,6 +31,7 @@ import { SellerInformationComponent } from './seller-information.component';
 import { VehicleInformationComponent } from './vehicle-information.component';
 import { PhonePipe } from './phone.pipe';
 import { StrReplacePipe } from './str-replace.pipe';
+import { ListAdsComponent } from './list-ads/list-ads.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,8 @@ import { StrReplacePipe } from './str-replace.pipe';
     FileSelectDirective,
     LogoutComponent,
     ProposalComponent,
+    VehicleDetailsComponent,
+    ListAdsComponent
     VehicleDetailsComponent,
     InteresingVehiclesComponent,
     SendProposalFormComponent,

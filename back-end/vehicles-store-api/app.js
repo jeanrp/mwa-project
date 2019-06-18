@@ -3,9 +3,11 @@ var express = require('express');
 var customerSellersRoute = require('./routes/customer-sellers');
 var vehiclesAdsRouter = require('./routes/vehicles-ads');
 var loginRoute = require('./routes/login');
-var proposalRoute = require('./routes/proposals');
+var uploadRouter = require('./routes/uploadFiles');
 var mongoose = require('mongoose');
-var cors = require('cors')
+var cors = require('cors');
+var multer = require('multer');
+
 var config = require('./config');
 
 var app = express();

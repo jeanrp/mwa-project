@@ -6,13 +6,15 @@ var ObjectId = require('mongodb').ObjectID;
 
 exports.create = async function (req, res, next) {
     try {
-        let vehicle_ad = {
-            _id: new ObjectId(),
-            ...req.body
-        };
-        let customer = await CustomerSeller.findById(req.params.id);
-        await CustomerSeller.findByIdAndUpdate(req.params.id, { $push: { vehicles_ads: { vehicle_ad } } });
-        res.json(vehicle_ad);
+        await CustomerSeller.findByIdAndUpdate(req.params.id, {
+            $push: {
+                vehicles_ads:
+                    {_id: new ObjectId(), ...req.body}
+            }
+        });
+        res.json({
+            success: true
+        });
     } catch (error) {
         console.log(error);
         next(error);
@@ -21,14 +23,14 @@ exports.create = async function (req, res, next) {
 
 exports.list = async function (req, res, next) {
     try {
-        let result = await CustomerSeller.find({"vehicles_ads.interestType": "seller" }, { vehicles_ads: 1, _id: 0 });
+        let result = await CustomerSeller.find({"vehicles_ads.interestType": "seller"}, {vehicles_ads: 1, _id: 0});
         let newResult = [];
         result.forEach((v, i) => {
-            v.vehicles_ads.forEach((val, index) => {                
+            v.vehicles_ads.forEach((val, index) => {
                 newResult.push(val);
             });
         });
- 
+
         res.status(200).json(newResult);
     } catch (error) {
         console.log(error);
@@ -37,10 +39,10 @@ exports.list = async function (req, res, next) {
 };
 
 exports.details = async function (req, res, next) {
-    try { 
+    try {
         console.log(req.params.id);
-        let result = await CustomerSeller.find({"vehicles_ads._id": ObjectId(req.params.id)});      
-        console.log(result);  
+        let result = await CustomerSeller.find({"vehicles_ads._id": ObjectId(req.params.id)});
+        console.log(result);
         res.json(result[0].vehicles_ads);
     } catch (error) {
         console.log(error);
@@ -50,7 +52,7 @@ exports.details = async function (req, res, next) {
 
 exports.update = async function (req, res, next) {
     try {
-        await CustomerSeller.findByIdAndUpdate(req.params.id, { $set: req.body });
+        await CustomerSeller.findByIdAndUpdate(req.params.id, {$set: req.body});
         res.json('Product udpated.');
     } catch (error) {
         console.log(error);

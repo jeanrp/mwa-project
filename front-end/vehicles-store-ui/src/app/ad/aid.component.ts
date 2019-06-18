@@ -4,7 +4,7 @@ import {Validators} from '@angular/forms';
 import {CustomerSellerService} from "../services/customer-seller.service";
 import {VehiclesAdsService} from '../services/vehicles-ads.service';
 import {Router} from "@angular/router";
-import {FileUploader, FileSelectDirective} from 'ng2-file-upload/ng2-file-upload';
+import {FileUploader, FileSelectDirective} from 'ng2-file-upload';
 
 
 @Component({
@@ -12,8 +12,19 @@ import {FileUploader, FileSelectDirective} from 'ng2-file-upload/ng2-file-upload
   templateUrl: './aid.component.html',
   styleUrls: ['./aid.component.css']
 })
+
+
 export class AidComponent implements OnInit {
   private base64textString: String = "";
+
+
+  public uploader: FileUploader = new FileUploader({
+    url: 'http://localhost:3000/upload'
+  });
+
+  public hasBaseDropZoneOver: boolean;
+  public hasAnotherDropZoneOver: boolean;
+
   image: string | ArrayBuffer;
   categories = ['bus', 'car', 'trailer', 'van', 'sedan'];
   transmission = ['manual', 'automatic', 'other'];
@@ -48,12 +59,22 @@ export class AidComponent implements OnInit {
       description: ['', Validators.required],
       price: ['', Validators.required],
       title: ['', Validators.required],
+      interestType: ['seller'],
+      creationDate: [''],
       images: [[]]
     });
+
+    this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      console.log('FileUpload:uploaded:', item, status, response);
+      // alert('File uploaded successfully');
+    };
   }
 
   onSubmit() {
     this.submitted = true;
+    const today = new Date();
+    this.addForm.value.creationDate = today;
     console.log(this.addForm.value);
     if (!this.addForm.valid) {
       console.log('valid form');
@@ -71,7 +92,10 @@ export class AidComponent implements OnInit {
     const files = evt.target.files;
     const file = files[0];
 
+    console.log(file);
+
     if (files && file) {
+      console.log('this if');
       const reader = new FileReader();
       reader.onload = this._handleReaderLoaded.bind(this);
       reader.readAsBinaryString(file);
@@ -81,11 +105,19 @@ export class AidComponent implements OnInit {
   _handleReaderLoaded(readerEvt) {
     const binaryString = readerEvt.target.result;
     this.base64textString = btoa(binaryString);
-
     // console.log(btoa(binaryString));
-    this.addForm.value.images.push(btoa(binaryString));
+    this.addForm.value.images.push('data:image/jpg;base64,' + btoa(binaryString));
     console.log(this.addForm.value);
     console.log(typeof this.addForm.value);
+  }
+
+
+  public fileOverBase(e: any): void {
+    this.hasBaseDropZoneOver = e;
+  }
+
+  public fileOverAnother(e: any): void {
+    this.hasAnotherDropZoneOver = e;
   }
 
 
