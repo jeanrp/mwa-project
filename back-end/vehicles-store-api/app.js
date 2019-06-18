@@ -3,6 +3,7 @@ var express = require('express');
 var customerSellersRoute = require('./routes/customer-sellers');
 var vehiclesAdsRouter = require('./routes/vehicles-ads');
 var loginRoute = require('./routes/login');
+var proposalRoute = require('./routes/proposals');
 var mongoose = require('mongoose');
 var cors = require('cors')
 var config = require('./config');
@@ -43,6 +44,7 @@ app.use(function (req, res, next) {
 
 app.use('/customers-sellers', customerSellersRoute);
 app.use('/vehicles-ads', vehiclesAdsRouter);
+app.use('/proposals', proposalRoute);
 app.use('/authentication', loginRoute);
 
 // catch 404 and forward to error handler
