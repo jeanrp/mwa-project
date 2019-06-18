@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var token = require('../middlewares/checkAuthToken');
 
 var vehiclesAds = require('../controllers/vehicles_ads');
 
-router.post('/:id', vehiclesAds.create);
+router.post('/:id',token.checkAuthToken, vehiclesAds.create);
 
 router.get('/', vehiclesAds.list);
 

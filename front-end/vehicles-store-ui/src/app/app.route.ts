@@ -10,6 +10,7 @@ import {AidComponent} from "./ad/aid.component";
 import { VehicleDetailsComponent } from './vehicle-details.component';
 import {ProposalComponent} from "./proposal/proposal.component"
 import {InteresingVehiclesComponent} from "./interesing-vehicles/interesing-vehicles.component"
+import { ListAdsComponent } from './list-ads/list-ads.component';
 
 const MY_ROUTES: Routes = [
     { path: '', redirectTo: 'vehicles-ads', pathMatch: 'full' },
@@ -17,7 +18,8 @@ const MY_ROUTES: Routes = [
     { path: 'register', component: CustomerComponent },
     { path: 'edit-profile', component: EditCustomerComponent },
     { path: 'show-proposal', component: ProposalComponent },
-    { path: 'show-InterestinVehicles', component: InteresingVehiclesComponent },
+    { path: 'show-interesting-vehicles', component: InteresingVehiclesComponent },
+    { path: 'show-my-vehicles-ads', component: ListAdsComponent },
     { path: 'login', component: LoginComponent },
     { path: 'logout', component: LogoutComponent },
     { path: 'add-ad', component: AidComponent },

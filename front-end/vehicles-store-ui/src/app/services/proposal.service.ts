@@ -13,6 +13,8 @@ export class ProposalService extends BaseService {
   }
 
   sendProposal(proposal: ProposalModel) {
-    return this.httpClient.post(this.baseUrl + "proposals/" + proposal.customer_seller_id, proposal);
+    let user = JSON.parse(localStorage.getItem('user'));
+
+    return this.httpClient.post(this.baseUrl + "proposals/" + user._id, proposal);
   }
 }
