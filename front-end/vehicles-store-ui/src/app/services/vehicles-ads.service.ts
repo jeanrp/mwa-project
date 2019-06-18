@@ -26,7 +26,7 @@ export class VehiclesAdsService extends BaseService {
 
   addVehicleAd(vehicleAd: VehiclesAd) {
     const user = JSON.parse(localStorage.getItem('user'));
-    console.log(user);
+    // console.log(user);
     return this.http.post(this.baseUrl + 'vehicles-ads' + '/' + user._id, vehicleAd);
   }
 

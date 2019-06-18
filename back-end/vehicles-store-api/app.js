@@ -3,8 +3,11 @@ var express = require('express');
 var customerSellersRoute = require('./routes/customer-sellers');
 var vehiclesAdsRouter = require('./routes/vehicles-ads');
 var loginRoute = require('./routes/login');
+var uploadRouter = require('./routes/uploadFiles');
 var mongoose = require('mongoose');
-var cors = require('cors')
+var cors = require('cors');
+var multer = require('multer');
+
 var config = require('./config');
 
 var app = express();
@@ -15,8 +18,17 @@ DB = false;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
 app.use(cors());
+
+// app.use(function (req, res, next) {
+//   res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+//   res.header('Access-Control-Allow-Methods', 'POST');
+//   res.header('Access-Control-Allow-Credentials', true);
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
+//
+
 
 app.use(function (req, res, next) {
   if (!DB) { 
@@ -34,8 +46,6 @@ app.use(function (req, res, next) {
       DB = false;
       console.log('MongoDB connection error:');
     });
-
-
   }
   next();
 });
@@ -44,6 +54,7 @@ app.use(function (req, res, next) {
 app.use('/customers-sellers', customerSellersRoute);
 app.use('/vehicles-ads', vehiclesAdsRouter);
 app.use('/authentication', loginRoute);
+// app.use('/upload', uploadRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -60,5 +71,13 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+
+
+/* GET home page. */
+
+
+
 
 module.exports = app;

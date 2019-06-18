@@ -6,13 +6,15 @@ var ObjectId = require('mongodb').ObjectID;
 
 exports.create = async function (req, res, next) {
     try {
-        let vehicle_ad = {
-            _id: new ObjectId(),
-            ...req.body
-        };
-        let customer = await CustomerSeller.findById(req.params.id);
-        await CustomerSeller.findByIdAndUpdate(req.params.id, { $push: { vehicles_ads: { vehicle_ad } } });
-        res.json(vehicle_ad);
+        await CustomerSeller.findByIdAndUpdate(req.params.id, {
+            $push: {
+                vehicles_ads:
+                    {_id: new ObjectId(), ...req.body}
+            }
+        });
+        res.json({
+            success: true
+        });
     } catch (error) {
         console.log(error);
         next(error);
@@ -21,12 +23,12 @@ exports.create = async function (req, res, next) {
 
 exports.list = async function (req, res, next) {
     try {
-        let result = await CustomerSeller.find({"vehicles_ads.interestType": "seller" }, { vehicles_ads: 1, _id: 0 });
+        let result = await CustomerSeller.find({"vehicles_ads.interestType": "seller"}, {vehicles_ads: 1, _id: 0});
         let newResult = [];
         result.forEach((v, i) => {
-            v.vehicles_ads.forEach((val, index) => {                         
+            v.vehicles_ads.forEach((val, index) => {
                 if (val.brand.length > 10)
-                    val.brand = val.brand.substr(0,9) + "...";
+                    val.brand = val.brand.substr(0, 9) + "...";
                 newResult.push(val);
             });
         });
@@ -50,7 +52,7 @@ exports.details = async function (req, res, next) {
 
 exports.update = async function (req, res, next) {
     try {
-        await CustomerSeller.findByIdAndUpdate(req.params.id, { $set: req.body });
+        await CustomerSeller.findByIdAndUpdate(req.params.id, {$set: req.body});
         res.json('Product udpated.');
     } catch (error) {
         console.log(error);
