@@ -39,6 +39,15 @@ exports.details = async function (req, res, next) {
     }
 };
 
+exports.detailsByCar = async function (req, res, next) {
+    try { 
+        let result = await CustomerSeller.find({ "vehicles_ads._id": ObjectId(req.params.id) }); 
+        res.json(result);
+    } catch (error) {
+        console.log(error);
+        return next(err);
+    }
+};
 exports.update = async function (req, res, next) {
     try {
         let customerSeller = req.body;

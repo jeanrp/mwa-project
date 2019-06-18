@@ -22,6 +22,11 @@ export class CustomerSellerService extends BaseService {
     return this.http.get<CustomerModel>(this.baseUrl + 'customers-sellers' + '/' + id);
   }
 
+  getCustomerVehicleByCustomerId(id: string) {
+    console.log(id);
+    return this.http.get<CustomerModel>(this.baseUrl + 'customers-sellers' + '/vehicle/' + id);
+  }
+
   addCustomer(customer: CustomerModel) {
     return this.http.post(this.baseUrl + 'customers-sellers', customer);
   }

@@ -2,6 +2,7 @@ var faker = require('faker');
 var base64Img = require('base64-img'); 
 var ObjectID = require('mongodb').ObjectID;
 
+let carData = require('./brand-models.json');
 var fs = require('fs');
 
 let t = 1;
@@ -16,224 +17,13 @@ fs.readdirSync(testFolder).forEach(file => {
 }); 
 
 let types = ["seller", "customer"];
-var brands = [
-    {
-        "name": "BUICK"
-    },
-    {
-        "name": "CADILLAC"
-    },
-    {
-        "name": "CAPARO"
-    },
-    {
-        "name": "CARBONTECH"
-    },
-    {
-        "name": "CARICE"
-    },
-    {
-        "name": "CHANG'AN"
-    },
-    {
-        "name": "CHANGHE"
-    },
-    {
-        "name": "CHERY"
-    },
-    {
-        "name": "CHEVROLET"
-    },
-    {
-        "name": "CHEVRON"
-    },
-    {
-        "name": "CITROËN"
-    },
-    {
-        "name": "CHRYSLER"
-    },
-    {
-        "name": "COMMUTER CARS"
-    }, {
-        "name": "EQUUS"
-    },
-    {
-        "name": "FORD"
-    },
-    {
-        "name": "FORD AUSTRALIA"
-    },
-    {
-        "name": "FORD GERMANY"
-    },
-    {
-        "name": "FORNASARI"
-    },
-    {
-        "name": "FRASER"
-    },
-
-    {
-        "name": "HENNESSEY"
-    },
-    {
-        "name": "HINDUSTAN"
-    },
-    {
-        "name": "HOLDEN"
-    },
-    {
-        "name": "HONDA"
-    },
-    {
-        "name": "HONGQI"
-    },
-    {
-        "name": "HRADYESH"
-    },
-    {
-        "name": "HTT TECHNOLOGIES"
-    },
-    {
-        "name": "HULME"
-    },
-    {
-        "name": "HYUNDAI"
-    },
-    {
-        "name": "ICML"
-    },
-    {
-        "name": "IFR"
-    },
-    {
-        "name": "IRAN KHODRO"
-    },
-    {
-        "name": "IKCO"
-    },
-    {
-        "name": "IMPERIA"
-    },
-    {
-        "name": "INFINITI"
-    },
-    {
-        "name": "IVM"
-    },
-    {
-        "name": "JAGUAR"
-    },
-    {
-        "name": "JEEP"
-    },
-    {
-        "name": "JENSEN MOTORS"
-    },
-    {
-        "name": "JETCAR"
-    },
-    {
-        "name": "JONWAY"
-    },
-    {
-        "name": "KORRES"
-    },
-    {
-        "name": "KIA"
-    },
-    {
-        "name": "KIAT"
-    },
-    {
-        "name": "KISH KHODRO"
-    },
-    {
-        "name": "KTM"
-    },
-    {
-        "name": "LADA"
-    },
-    {
-        "name": "LAMBORGHINI"
-    },
-    {
-        "name": "LANCIA"
-    },
-    {
-        "name": "LAND ROVER"
-    },
-    {
-        "name": "LEOPARD"
-    },
-    {
-        "name": "LEXUS"
-    },
-    {
-        "name": "LI-ION"
-    },
-    {
-        "name": "LIFAN"
-    },
-    {
-        "name": "LIGHTNING"
-    },
-    {
-        "name": "LINCOLN"
-    },
-    {
-        "name": "LISTER"
-    },
-    {
-        "name": "LOTUS CARS"
-    },
-    {
-        "name": "LUCRA CARS"
-    },
-    {
-        "name": "UAZ"
-    },
-    {
-        "name": "VEPR"
-    },
-    {
-        "name": "VOLKSWAGEN"
-    },
-    {
-        "name": "VOLVO"
-    },
-    {
-        "name": "WHEEGO"
-    },
-    {
-        "name": "WIESMANN"
-    },
-    {
-        "name": "XENIA"
-    },
-    {
-        "name": "YES!"
-    },
-    {
-        "name": "YOUABIAN PUMA"
-    },
-    {
-        "name": "ZASTAVA AUTOMOBILES"
-    },
-    {
-        "name": "ZENDER CARS"
-    },
-    {
-        "name": "ZENOS CARS"
-    },
-    {
-        "name": "ZENVO"
-    }
-
-]; 
+ 
 
 function generateDocument(i) {
+    var car = carData[faker.random.number({min: 0, max: carData.length - 1})];
+    var brand = car.brand;
+    var model = car.models[faker.random.number({min: 0, max: car.models.length - 1})]; 
+
     let id_customer_seller = new ObjectID();
     let id_address = new ObjectID();
     var vehicles_ads_id = new ObjectID();
@@ -267,8 +57,8 @@ function generateDocument(i) {
                 "category": "Lorem",
                 "vin": faker.random.number() + "",
                 "odometer": faker.random.number(({min: 0, max: 300000})),
-                "model": "Lorem",
-                "brand": brands[faker.random.number({min: 0, max: brands.length - 1})].name,
+                "model": model,
+                "brand": brand,
                 "condition": "Lorem",
                 "fuel": "Lorem",
                 "color": faker.commerce.color(),

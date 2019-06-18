@@ -60,10 +60,10 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
 
       this.loginService.login(this.loginForm.value)
-        .subscribe(data => {
+        .subscribe(data => {        
           this.onSaveComplete(data);
         },
-          error => {
+          error => { 
             this.onError(error);
           });
     }
@@ -79,8 +79,7 @@ export class LoginComponent implements OnInit {
   }
 
 
-  onError(error: any) {
-    console.log(error);
-    this.toastr.error('Occurred an error when was processing', ':(');
+  onError(error: any) { 
+    this.toastr.error(error);
   }
 }

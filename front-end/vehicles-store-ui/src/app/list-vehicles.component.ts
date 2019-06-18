@@ -19,8 +19,8 @@ import { flatMap } from 'rxjs/operators';
            [autoPlayWaitForLazyLoad]="true">
 </slideshow>
        <div class="card-body">
-        <h5 class="card-title"><b>{{ vehicle.title }}</b></h5>
-        <p class="card-text"><b>Price: </b> {{vehicle.price}}, <b>Year:</b> {{vehicle.year}}, <b>Model:</b> {{vehicle.model}}, <b>Brand:</b> {{vehicle.brand}}</p>
+        <h5 class="card-title"><b>{{ vehicle.model }}</b></h5>
+        <p class="card-text"><b>Price: </b> <span id="price">{{vehicle.price | currency}}</span>&nbsp;&nbsp; <b>Year:</b> {{vehicle.year}}&nbsp;&nbsp; <br /><b>Brand:</b> {{vehicle.brand}}</p>
         <a class="btn btn-primary btn-block" [routerLink]="[ '/vehicles-ads/', vehicle._id ]">Details</a>
       </div>
   </div>
