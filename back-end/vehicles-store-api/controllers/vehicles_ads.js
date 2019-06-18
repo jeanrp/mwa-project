@@ -52,7 +52,8 @@ exports.details = async function (req, res, next) {
 
 exports.update = async function (req, res, next) {
     try {
-        await CustomerSeller.findByIdAndUpdate(req.params.id, {$set: req.body});
+        // await CustomerSeller.findByIdAndUpdate(req.params.id, {$set: req.body});
+        let customer = await CustomerSeller.find({"vehicles_ads._id": ObjectId(req.params.id)});
         res.json('Product udpated.');
     } catch (error) {
         console.log(error);
@@ -62,10 +63,14 @@ exports.update = async function (req, res, next) {
 
 exports.delete = async function (req, res, next) {
     try {
-        await CustomerSeller.findByIdAndRemove(req.params.id)
-        res.json('Deleted successfully!');
+       await CustomerSeller.update(
+            {_id: ObjectId(req.params.id)},
+            {
+                $pull: {vehicles_ads: {_id: ObjectId(req.params.vehicle_id)}},
+            });
+        res.json({success: true});
     } catch (error) {
         console.log(error);
-        return next(err);
+        return next(error);
     }
 };
