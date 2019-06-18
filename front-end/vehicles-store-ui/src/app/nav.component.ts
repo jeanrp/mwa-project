@@ -23,19 +23,23 @@ import { LoginService } from './services/login.service';
             </li>
             
             <li class="nav-item">
-              <a class="nav-link" *ngIf="loginService.isUserLoggedIn()" [routerLink]="[ '/add-ad' ]">Create a new Post</a>
+              <a class="nav-link" *ngIf="loginService.isUserLoggedIn()" [routerLink]="[ '/add-ad' ]">Announce Vehicle</a>
             </li>
             <li class="nav-item active">
             <a class="nav-link" *ngIf="loginService.isUserLoggedIn()" [routerLink]="[ '/edit-profile' ]">Edit Profile <span class="sr-only">(current)</span></a>
           </li> 
 
           <li class="nav-item active">
-          <a class="nav-link" *ngIf="loginService.isUserLoggedIn()" [routerLink]="[ '/show-proposal' ]">proposal <span class="sr-only">(current)</span></a>
+          <a class="nav-link" *ngIf="loginService.isUserLoggedIn()" [routerLink]="[ '/show-proposal' ]">Proposals <span class="sr-only">(current)</span></a>
         </li> 
 
         <li class="nav-item active">
-          <a class="nav-link" *ngIf="loginService.isUserLoggedIn()" [routerLink]="[ '/show-InterestinVehicles' ]">InterestingVehicles <span class="sr-only">(current)</span></a>
+          <a class="nav-link" *ngIf="loginService.isUserLoggedIn()" [routerLink]="[ '/show-interesting-vehicles' ]">Requested Vehicles <span class="sr-only">(current)</span></a>
         </li> 
+
+            <li class="nav-item active">
+              <a class="nav-link" *ngIf="loginService.isUserLoggedIn()" [routerLink]="[ '/show-my-vehicles-ads' ]">My Vehicles <span class="sr-only">(current)</span></a>
+            </li> 
             <li class="nav-item">
               <a class="nav-link" *ngIf="loginService.isUserLoggedIn()" [routerLink]="[ '/logout' ]">Sign out</a>
             </li>
@@ -65,7 +69,7 @@ export class NavComponent implements OnInit {
   constructor(private loginService: LoginService) { }
 
   ngOnInit() {
-    
+
   }
 
 }

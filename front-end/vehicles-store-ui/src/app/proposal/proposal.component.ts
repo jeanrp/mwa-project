@@ -22,11 +22,8 @@ export class ProposalComponent implements OnInit {
     let value = localStorage.getItem('user');
     this.customerId = JSON.parse(value)._id;
    
-    this.customerService.getCustomerById(this.customerId).subscribe(data => {
-      
-      console.log("hi" + data);
-      this.proposals = JSON.parse(JSON.stringify(data.proposals));
-   
+    this.customerService.getCustomerById(this.customerId).subscribe(data => { 
+      this.proposals = JSON.parse(JSON.stringify(data.proposals));   
     });
   }
 }
