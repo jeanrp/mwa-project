@@ -14,25 +14,20 @@ export class EditCustomerComponent implements OnInit {
   custotmer: CustomerModel;
   editForm: FormGroup;
   submitted = false;
- customerId ="5d06bce990004e72e4457b21";
+ customerId :string;
   constructor(private formBuilder: FormBuilder, private router: Router, private customerService: CustomerSellerService) { }
 
   ngOnInit() {
-    //let customerId = localStorage.getItem("5d06bce990004e72e4457b21");
-    // if(!customerId){
-    //   //alert("Something wrong!");
-    //   this.router.navigate(['']);
-    //   return;
-    // }
-
-    this.editForm = this.formBuilder.group({     
+    let value = localStorage.getItem('user');
+    this.customerId = JSON.parse(value)._id; 
+    this.editForm = this.formBuilder.group({ 
+        
       firstName: ['', Validators.required],
       lastName: ['',Validators.required],
       phone:['',Validators.required],
       birthDate:['',Validators.required],
       email:['',Validators.required],
       password:['',Validators.required],
-      type:['',Validators.required],
       address: this.formBuilder.group({
         street: ['',Validators.required],
         city: ['',Validators.required],
@@ -46,10 +41,6 @@ export class EditCustomerComponent implements OnInit {
       this.editForm.patchValue(data); //Don't use editForm.setValue() as it will throw console error
     });
   }
-
-  // get the form short name to access the form fields
-   // get f() { return this.editForm.controls; }
-
   onSubmit(){
     this.submitted = true;
     console.log(this.editForm.valid);

@@ -25,6 +25,7 @@ import {SlideshowModule} from 'ng-simple-slideshow';
 import {AidComponent} from './ad/aid.component';
 import { FileSelectDirective } from 'ng2-file-upload';
 import { VehicleDetailsComponent } from './vehicle-details.component';
+import { InteresingVehiclesComponent } from './interesing-vehicles/interesing-vehicles.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { VehicleDetailsComponent } from './vehicle-details.component';
     FileSelectDirective,
     LogoutComponent,
     ProposalComponent,
-    VehicleDetailsComponent
+    VehicleDetailsComponent,
+    InteresingVehiclesComponent
   ],
   imports: [
     BrowserModule,

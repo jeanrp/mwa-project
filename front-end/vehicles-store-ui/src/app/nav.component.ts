@@ -17,6 +17,7 @@ import { LoginService } from './services/login.service';
             <li class="nav-item active">
               <a class="nav-link" *ngIf="!loginService.isUserLoggedIn()" [routerLink]="[ '/register' ]">Sign up <span class="sr-only">(current)</span></a>
             </li> 
+          
             <li class="nav-item">
               <a class="nav-link" *ngIf="!loginService.isUserLoggedIn()" [routerLink]="[ '/login' ]">Sign in</a>
             </li>
@@ -24,6 +25,17 @@ import { LoginService } from './services/login.service';
             <li class="nav-item">
               <a class="nav-link" *ngIf="loginService.isUserLoggedIn()" [routerLink]="[ '/add-ad' ]">Create a new Post</a>
             </li>
+            <li class="nav-item active">
+            <a class="nav-link" *ngIf="loginService.isUserLoggedIn()" [routerLink]="[ '/edit-profile' ]">Edit Profile <span class="sr-only">(current)</span></a>
+          </li> 
+
+          <li class="nav-item active">
+          <a class="nav-link" *ngIf="loginService.isUserLoggedIn()" [routerLink]="[ '/show-proposal' ]">proposal <span class="sr-only">(current)</span></a>
+        </li> 
+
+        <li class="nav-item active">
+          <a class="nav-link" *ngIf="loginService.isUserLoggedIn()" [routerLink]="[ '/show-InterestinVehicles' ]">InterestingVehicles <span class="sr-only">(current)</span></a>
+        </li> 
             <li class="nav-item">
               <a class="nav-link" *ngIf="loginService.isUserLoggedIn()" [routerLink]="[ '/logout' ]">Sign out</a>
             </li>

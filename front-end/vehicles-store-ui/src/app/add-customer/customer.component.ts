@@ -22,8 +22,8 @@ export class CustomerComponent implements OnInit {
       lastName: ['', Validators.required],
       phone: ['', Validators.required],
       email: ['', Validators.required],
-      password: ['', Validators.required],
-      type: ['', Validators.required]
+      password: ['', Validators.required]
+     
     });
 
   }

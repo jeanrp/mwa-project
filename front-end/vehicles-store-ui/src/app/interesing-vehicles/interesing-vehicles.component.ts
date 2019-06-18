@@ -1,19 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerModel } from '../models/CustomerModel'
 import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { CustomerSellerService } from '../services/customer-seller.service';
 @Component({
-  selector: 'app-proposal',
-  templateUrl: './proposal.component.html',
-  styleUrls: ['./proposal.component.css']
+  selector: 'app-interesing-vehicles',
+  templateUrl: './interesing-vehicles.component.html',
+  styleUrls: ['./interesing-vehicles.component.css']
 })
-export class ProposalComponent implements OnInit {
-  
+export class InteresingVehiclesComponent implements OnInit {
   editForm: FormGroup;
   submitted = false;
   customerId: string;
-  proposals : any[] = [];
+  vehicles_ads : any[] = [];
   //customerId ="5d06bce990004e72e4457b21";
   constructor(private formBuilder: FormBuilder, private router: Router, private customerService: CustomerSellerService) { }
 
@@ -24,9 +22,14 @@ export class ProposalComponent implements OnInit {
    
     this.customerService.getCustomerById(this.customerId).subscribe(data => {
       
-      console.log("hi" + data);
-      this.proposals = JSON.parse(JSON.stringify(data.proposals));
-   
+      // data.vehicles_ads.
+     let filteredData = data.vehicles_ads.filter((v,i) => 
+     {
+       return v.interestType === "customer";
+     })
+     
+     this.vehicles_ads = JSON.parse(JSON.stringify(filteredData));
+        
     });
   }
 }
