@@ -27,8 +27,6 @@ exports.list = async function (req, res, next) {
         let newResult = [];
         result.forEach((v, i) => {
             v.vehicles_ads.forEach((val, index) => {
-                if (val.brand.length > 10)
-                    val.brand = val.brand.substr(0, 9) + "...";
                 newResult.push(val);
             });
         });
@@ -42,8 +40,10 @@ exports.list = async function (req, res, next) {
 
 exports.details = async function (req, res, next) {
     try {
-        let result = await CustomerSeller.findById(req.params.id);
-        res.json(result);
+        console.log(req.params.id);
+        let result = await CustomerSeller.find({"vehicles_ads._id": ObjectId(req.params.id)});
+        console.log(result);
+        res.json(result[0].vehicles_ads);
     } catch (error) {
         console.log(error);
         return next(err);

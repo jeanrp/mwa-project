@@ -25,6 +25,12 @@ import {SlideshowModule} from 'ng-simple-slideshow';
 import {AidComponent} from './ad/aid.component';
 import { FileSelectDirective } from 'ng2-file-upload';
 import { VehicleDetailsComponent } from './vehicle-details.component';
+import { InteresingVehiclesComponent } from './interesing-vehicles/interesing-vehicles.component';
+import { SendProposalFormComponent } from './send-proposal-form.component';
+import { SellerInformationComponent } from './seller-information.component';
+import { VehicleInformationComponent } from './vehicle-information.component';
+import { PhonePipe } from './phone.pipe';
+import { StrReplacePipe } from './str-replace.pipe';
 import { ListAdsComponent } from './list-ads/list-ads.component';
 
 @NgModule({
@@ -44,6 +50,13 @@ import { ListAdsComponent } from './list-ads/list-ads.component';
     ProposalComponent,
     VehicleDetailsComponent,
     ListAdsComponent
+    VehicleDetailsComponent,
+    InteresingVehiclesComponent,
+    SendProposalFormComponent,
+    SellerInformationComponent,
+    VehicleInformationComponent,
+    PhonePipe,
+    StrReplacePipe
   ],
   imports: [
     BrowserModule,

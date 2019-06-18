@@ -7,6 +7,8 @@ router.post('/', customerSeller.create);
 
 router.get('/:id', customerSeller.details);
 
+router.get('/vehicle/:id', customerSeller.detailsByCar);
+
 router.put('/:id', customerSeller.update);
 
 router.delete('/:id', customerSeller.delete);
