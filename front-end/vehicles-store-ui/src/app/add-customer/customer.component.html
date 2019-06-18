@@ -1,47 +1,84 @@
-<!-- <div style="background-color:black;height:200px;width:100%;"></div> -->
-<div class="container">
-  <div class="row">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-8">
-      <div class="col-sm-6">
-        <form [formGroup]="customerSellerForm" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <label for="" class="control-label col-sm-4">First Name</label>
-            <div class="col-sm-12">
-              <input type="text" class="form-control" [formControlName]="'firstName'">
-            </div>
+<div class="col-md-3">
+    <h2 class="text-center">Add Customer</h2>
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>FirstName:</label>
+        <input type="text" formControlName="firstName" placeholder="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && firstName?.errors }">
+        <div *ngIf="submitted && firstName?.errors">
+          <div *ngIf="firstName?.errors.required">firstName is required</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label>LastName:</label>
+        <input type="text" formControlName="lastName" placeholder="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && lastName?.errors }">
+        <div *ngIf="submitted && lastName?.errors">
+          <div *ngIf="lastName?.errors.required">lastName is required</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label>PhoneNumber:</label>
+        <input type="text" formControlName="phone" placeholder="phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && phone?.errors }">
+        <div *ngIf="submitted && phone?.errors">
+          <div *ngIf="phone?.errors.required">phone is required</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+          <label>Email:</label>
+          <input type="text" formControlName="email" placeholder="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && email?.errors }">
+          <div *ngIf="submitted && email?.errors">
+            <div *ngIf="email?.errors.required">email is required</div>
           </div>
-          <div class="form-group">
-            <label for="" class="control-label col-sm-4">Last Name</label>
-            <div class="col-sm-12">
-              <input type="text" class="form-control" [formControlName]="'lastName'">
-            </div>
+      </div>
+
+      <div class="form-group">
+          <label>PassWord:</label>
+          <input type="password" formControlName="password" placeholder="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && password?.errors }">
+          <div *ngIf="submitted && password?.errors">
+            <div *ngIf="password?.errors.required">passWord is required</div>
           </div>
-          <div class="form-group">
-            <label for="" class="control-label col-sm-4">Phone Number</label>
-            <div class="col-sm-12">
-              <input type="text" class="form-control" [formControlName]="'phone'">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="" class="control-label col-sm-4">Email</label>
-            <div class="col-sm-12">
-              <input type="text" class="form-control" [formControlName]="'email'">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="" class="control-label col-sm-4">Password</label>
-            <div class="col-sm-12">
-              <input type="password" class="form-control" [formControlName]="'password'">
-            </div>
-          </div>
-          
-          
-          <div class="form-group"><button class="btn btn-primary btn-block" type="submit" [disabled]="!customerSellerForm.valid"
-              style="width:90%;margin-left:5%">Sign up</button></div>
-        </form>
+      </div>
+     
+  
+        <div formGroupName="address">
+            <h3>Address:</h3>
+             <div class="form-group">
+         
+             <div class="form-group">
+           <label>Street:</label>
+           <input type="text" formControlName="street" placeholder="street" class="form-control" [ngClass]="{ 'is-invalid': submitted && street?.errors }">
+           <div *ngIf="submitted && street?.errors">
+             <div *ngIf="street?.errors.required">street is required</div>
+           </div>
+           </div>
+           <div class="form-group">
+             <label>City:</label>
+             <input type="text" formControlName="city" placeholder="city" class="form-control" [ngClass]="{ 'is-invalid': submitted && city?.errors }">
+             <div *ngIf="submitted && city?.errors">
+               <div *ngIf="city?.errors.required">city is required</div>
+             </div>
+           </div>
+           <div class="form-group">
+               <label>State:</label>
+               <input type="text" formControlName="state" placeholder="state" class="form-control" [ngClass]="{ 'is-invalid': submitted && state?.errors }">
+               <div *ngIf="submitted && state?.errors">
+                 <div *ngIf="state?.errors.required">state is required</div>
+               </div>
+             </div>
+             <div class="form-group">
+             <label>Zipcode:</label>
+         <input type="text" formControlName="zipcode" placeholder="zipcode" class="form-control" [ngClass]="{ 'is-invalid': submitted && zipcode?.errors }">
+         <div *ngIf="submitted && zipcode?.errors">
+           <div *ngIf="zipcode?.errors.required">zipcode is required</div>
+         </div>
+       </div>
       </div>
     </div>
-  </div>
 
-</div>
+      <button type="submit"  class="btn btn-info">Sign Up</button>
+    </form>
+  </div>
+  
+  

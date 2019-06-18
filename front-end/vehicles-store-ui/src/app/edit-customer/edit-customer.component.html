@@ -76,12 +76,13 @@
                  <div *ngIf="state?.errors.required">state is required</div>
                </div>
              </div>
-             
+             <div class="form-group">
              <label>Zipcode:</label>
          <input type="text" formControlName="zipcode" placeholder="zipcode" class="form-control" [ngClass]="{ 'is-invalid': submitted && zipcode?.errors }">
          <div *ngIf="submitted && zipcode?.errors">
            <div *ngIf="zipcode?.errors.required">zipcode is required</div>
          </div>
+        </div>
        </div>
       </div>
 
