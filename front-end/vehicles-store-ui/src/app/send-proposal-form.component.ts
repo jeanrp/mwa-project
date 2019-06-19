@@ -48,7 +48,6 @@ export class SendProposalFormComponent implements OnInit {
       console.log(proposal); 
       this.proposalService.sendProposal(proposal)
         .subscribe(data => {
-          console.log(data);
           this.router.navigate(['']);
         });
     }

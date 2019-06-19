@@ -69,8 +69,6 @@ export class VehicleDetailsComponent implements OnInit {
       customerSellerService.getCustomerVehicleByCustomerId(params["id"]).subscribe(data => {
                var dataJson = JSON.parse(JSON.stringify(data));
                this.vehicle = dataJson.vehicles_ads[0];
-              //  console.log(this.vehicle);
-               console.log(dataJson);
                this.user = dataJson; 
       });
     });

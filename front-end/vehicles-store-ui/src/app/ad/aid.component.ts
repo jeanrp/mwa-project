@@ -30,7 +30,6 @@ export class AidComponent implements OnInit {
   transmission = ['manual', 'automatic', 'other'];
   private addForm: FormGroup;
   submitted: boolean;
-  // public uploader: FileUploader = new FileUploader({ url: URL, itemAlias: 'photo' });
 
   fuels = ['gas', 'diesel', 'hybrid', 'electric'];
   colors = ['black', 'blue', 'brown', 'green', 'grey', 'orange', 'purple', 'red', 'silver', 'white', 'yellow', 'custom'];
@@ -67,7 +66,6 @@ export class AidComponent implements OnInit {
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       console.log('FileUpload:uploaded:', item, status, response);
-      // alert('File uploaded successfully');
     };
   }
 
@@ -80,7 +78,6 @@ export class AidComponent implements OnInit {
       console.log('valid form');
       this.vehiclesAdsService.addVehicleAd(this.addForm.value)
         .subscribe(data => {
-          console.log(data);
           this.router.navigate(['show-my-vehicles-ads']);
         });
       return;
@@ -92,10 +89,7 @@ export class AidComponent implements OnInit {
     const files = evt.target.files;
     const file = files[0];
 
-    console.log(file);
-
-    if (files && file) {
-      console.log('this if');
+    if (files && file) { 
       const reader = new FileReader();
       reader.onload = this._handleReaderLoaded.bind(this);
       reader.readAsBinaryString(file);
@@ -105,7 +99,6 @@ export class AidComponent implements OnInit {
   _handleReaderLoaded(readerEvt) {
     const binaryString = readerEvt.target.result;
     this.base64textString = btoa(binaryString);
-    // console.log(btoa(binaryString));
     this.addForm.value.images.push('data:image/jpg;base64,' + btoa(binaryString));
     console.log(this.addForm.value);
     console.log(typeof this.addForm.value);
