@@ -27,24 +27,12 @@ export class CustomerSellerService extends BaseService {
   }
 
   addCustomer(customer: CustomerModel) {
-    console.log(customer);
     return this.http.post(this.baseUrl + 'customers-sellers', customer);
-  }
-
-  // deleteCustomer(id: string) {
-  //   return this.http.delete(this.baseUrl + 'Products' + '/' + id);
-  // }
+  } 
 
   updateCustomer(customer: CustomerModel) {
     return this.http.put(this.baseUrl + 'customers-sellers' + '/' + customer._id, customer);
   }
 
-  //   createCustomerSeller(empresa: Empresa): Observable<Empresa> {
-  //     let response = this.http
-  //         .post(this.UrlServiceV1 + "nova-conta", empresa, super.ObterJsonHeader())
-  //         .map(super.extractData)
-  //         .catch(super.serviceError);
 
-  //     return response;
-  // }
 }

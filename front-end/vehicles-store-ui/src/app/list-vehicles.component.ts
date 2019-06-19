@@ -93,8 +93,7 @@ export class ListVehiclesComponent implements OnInit {
     vehicleService.getAllAds().subscribe((data: VehiclesAd[]) => {
       this.vehicles = data;
       this.startPage = 0;
-      this.paginationLimit = 6;
-      console.log(this.vehicles);
+      this.paginationLimit = 6; 
     });
   }
 

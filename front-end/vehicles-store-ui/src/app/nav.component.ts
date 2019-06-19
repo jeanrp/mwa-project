@@ -26,8 +26,7 @@ import { LoginService } from './services/login.service';
               <a class="nav-link" *ngIf="loginService.isUserLoggedIn()" [routerLink]="[ '/add-ad' ]">Announce Vehicle</a>
             </li>
             <li class="nav-item active">
-          </li>   
-      
+          </li>        
           
                 
             <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown" *ngIf="loginService.isUserLoggedIn()">
@@ -38,13 +37,12 @@ import { LoginService } from './services/login.service';
 
             </div> 
         </div>
-
-
                    
           <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown" *ngIf="loginService.isUserLoggedIn()">
               <button class="btn btn-primary mr-2" id="dropdownManual" ngbDropdownAnchor (focus)="myDrop.open()">{{loginService.getUserLoggedIn().email }}</button>
               <div ngbDropdownMenu aria-labelledby="dropdownManual">
               <button ngbDropdownItem [routerLink]="[  '/show-proposal' ]" (click)="$event.stopPropagation(); myDrop.open();">Proposals</button>
+              <button ngbDropdownItem [routerLink]="[ '/edit-profile' ]" (click)="$event.stopPropagation(); myDrop.open();">Edit Profile</button>  
                 <button ngbDropdownItem [routerLink]="[ '/logout' ]" (click)="$event.stopPropagation(); myDrop.open();">Logout</button>  
               </div> 
           </div>

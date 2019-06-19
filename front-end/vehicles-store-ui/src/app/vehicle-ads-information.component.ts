@@ -78,17 +78,12 @@ export class VehicleAdsInformationComponent implements OnInit {
   delete(id) {
     this.vehiclesAdsService.removeVehicleAd(id)
       .subscribe(data => {
-          console.log(data);
           const user = localStorage.getItem('user');
           this.vehicles_ads = this.vehicles_ads.filter((v) => {
               return v._id !== id;
             }
           );
           this.newVehiclesAds.emit(JSON.stringify(this.vehicles_ads));
-
-          // this.vehicles_ads = this.vehiclesAdsService.getVehicleByOwner(user._id);
-          // this.router.navigate([''], {skipLocationChange: true});
-          // this.router.navigate(['show-my-vehicles-ads']);
         },
         error => {
           console.log(error);

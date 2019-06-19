@@ -167,8 +167,6 @@ export class SearchBarComponent implements OnInit {
     this.newVehicle.emit(JSON.stringify(vehic));
 
 
-
-
     this.isSearching = false;
   }
 

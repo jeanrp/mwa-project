@@ -18,8 +18,6 @@ export class LoginService extends BaseService {
   login(user: UserLoginModel) {
     let response = this.http.post(this.baseUrl + "authentication", user)
       .pipe(map((res: Response) => {
-        console.log("res");
-        console.log(res);
         return super.extractData(res);
       }), catchError((err: HttpErrorResponse) => {
         return throwError(new Error(err.error.message));
