@@ -29,7 +29,7 @@ import {Router} from "@angular/router";
 
                 <div class="row">
                   <div class="col-sm-3" style="text-align: right"><strong>Price : </strong></div>
-                  <div class="col-sm-3"> {{ vehicle.price | currency  }} </div>
+                  <div class="col-sm-3" *ngIf="vehicle.price"> {{ vehicle.price | currency  }} </div>
                   <div class="col-sm-3" style="text-align: right"><strong>Odometer : </strong></div>
                   <div class="col-sm-3"> {{ vehicle.odometer   }} </div>
                 </div>

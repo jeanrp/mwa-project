@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
       <dl>
 
           <dt class="label">Condition</dt><dd>Condition</dd>
-          <dt class="label">Price</dt><dd>{{vehic.price | currency }}</dd>          
+          <dt class="label" *ngIf="vehic.price">Price</dt><dd>{{vehic.price | currency }}</dd>          
 
           <dt class="label">Brand</dt><dd>{{vehic.brand}}</dd>
           <dt class="label">Model</dt><dd>{{vehic.model}}</dd>
@@ -25,7 +25,7 @@ import { Component, OnInit, Input } from '@angular/core';
   </div>
   <div class="col-sm-4">
     <dl>
-          <dt class="label">Odometer</dt><dd>{{vehic.odometer | number: '2.'}} &nbsp;km</dd>
+          <dt class="label" *ngIf="vehic.odometer">Odometer</dt><dd>{{vehic.odometer | number: '2.'}} &nbsp;km</dd>
           <dt class="label">Vin</dt><dd>{{vehic.vin}}</dd>    
 
           <dt class="label">Transmission</dt><dd>{{vehic.transmission}}</dd>

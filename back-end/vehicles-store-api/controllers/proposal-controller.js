@@ -6,7 +6,7 @@ exports.create = async function (req, res, next) {
     try {     
 
         var proposals = {
-            ...req.body 
+            ...req.body
         }; 
         
         let seller = await CustomerSeller.findById(proposals.customer_seller_id); 
@@ -22,7 +22,7 @@ exports.create = async function (req, res, next) {
             $push: { vehicles_ads: vehicle[0] }
         });         
         
-        await CustomerSeller.findByIdAndUpdate(seller._id, { $push: { proposals: {  _id: new ObjectId(), ...req.body  } } });                           
+        await CustomerSeller.findByIdAndUpdate(seller._id, { $push: { proposals: {  _id: new ObjectId(), proposalDate: new Date(), ...req.body  } } });                           
            
         res.status(200).json({ ok: true, message: "Proposal succesfully inserted"});
     } catch (error) {

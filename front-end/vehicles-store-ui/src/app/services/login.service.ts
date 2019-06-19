@@ -33,6 +33,12 @@ export class LoginService extends BaseService {
     return !(user === null);
   }
 
+  getUserLoggedIn() {
+    let user = localStorage.getItem('user');
+
+    return JSON.parse(user);
+  }
+
   logout() {
     localStorage.removeItem("user");
   }
