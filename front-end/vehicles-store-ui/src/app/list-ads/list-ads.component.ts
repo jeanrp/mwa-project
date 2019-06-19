@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CustomerSellerService } from '../services/customer-seller.service';
+import {Component, OnInit} from '@angular/core';
+import {CustomerSellerService} from '../services/customer-seller.service';
 
 @Component({
   selector: 'app-list-ads',
@@ -12,7 +12,8 @@ export class ListAdsComponent implements OnInit {
   vehicles_ads: any[] = [];
 
 
-  constructor(private customerService: CustomerSellerService) { }
+  constructor(private customerService: CustomerSellerService) {
+  }
 
   ngOnInit() {
     let value = localStorage.getItem('user');
@@ -20,7 +21,7 @@ export class ListAdsComponent implements OnInit {
 
     this.customerService.getCustomerById(this.customerId).subscribe(data => {
 
-      this.vehicles_ads = JSON.parse(JSON.stringify(data.vehicles_ads)); 
+      this.vehicles_ads = JSON.parse(JSON.stringify(data.vehicles_ads));
     });
   }
 }

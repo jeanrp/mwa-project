@@ -18,7 +18,7 @@ import { FooterComponent } from './footer.component';
 import { LogoutComponent } from './logout.component';
 import { ProposalComponent } from './proposal/proposal.component';
 import { LoginService } from './services/login.service';
-import { SlideshowModule } from 'ng-simple-slideshow'; 
+import { SlideshowModule } from 'ng-simple-slideshow';
 //I keep the new line
 import { AidComponent } from './ad/aid.component';
 import { FileSelectDirective } from 'ng2-file-upload';
@@ -62,8 +62,7 @@ import { Ng5SliderModule } from 'ng5-slider';
     PhonePipe,
     StrReplacePipe,
     VehicleAdsInformationComponent,
-    ReturnSpecificCustomerByParamDirective,
-    SearchBarComponent
+    ReturnSpecificCustomerByParamDirective
   ],
   imports: [
     BrowserModule,
@@ -76,12 +75,9 @@ import { Ng5SliderModule } from 'ng5-slider';
       timeOut: 3000,
       preventDuplicates: true
     }),
-    myRoutes,
-    Ng5SliderModule
-
+    myRoutes
   ],
-  providers: [VehiclesAdsService, ProposalService, CustomerSellerService, LoginService, { provide: HTTP_INTERCEPTORS, useClass: AuthorizationInterceptor, multi: true }],
+  providers: [VehiclesAdsService, ProposalService, CustomerSellerService, LoginService, { provide: HTTP_INTERCEPTORS, useClass: AuthorizationInterceptor, multi: true}],  
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }

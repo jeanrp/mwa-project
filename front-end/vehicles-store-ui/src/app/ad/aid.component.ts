@@ -81,7 +81,7 @@ export class AidComponent implements OnInit {
       this.vehiclesAdsService.addVehicleAd(this.addForm.value)
         .subscribe(data => {
           console.log(data);
-          // this.router.navigate(['']);
+          this.router.navigate(['show-my-vehicles-ads']);
         });
       return;
     }

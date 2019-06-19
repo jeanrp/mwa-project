@@ -62,6 +62,7 @@ exports.update = async function (req, res, next) {
 };
 
 exports.delete = async function (req, res, next) {
+    console.log('call me on the back-end1');
     try {
        await CustomerSeller.update(
             {_id: ObjectId(req.params.id)},
