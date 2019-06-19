@@ -8,6 +8,8 @@ import {EventEmitter} from '@angular/core';
 @Component({
   selector: 'app-vehicle-ads-information',
   template: `
+ 
+
     <div *ngFor="let vehicle of vehicles_ads">
       <div class="card mb-3" style="max-width: 840px;" appReturnSpecificCustomerByParam
            [currentInterestType]="vehicle.interestType" [interestTypeRequested]="interestType">
@@ -59,7 +61,17 @@ import {EventEmitter} from '@angular/core';
       </div>
     </div>
   `,
-  styles: []
+  styles: [`
+      
+  .count{
+    margin-left:50px;
+    font-size:20px;
+    line-height: 2em;
+    margin-bottom:15px;
+}
+
+.count strong{ font-size:25px;}
+  `]
 })
 export class VehicleAdsInformationComponent implements OnInit {
 

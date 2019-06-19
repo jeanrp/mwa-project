@@ -30,7 +30,7 @@ import { ToastrService } from 'ngx-toastr';
             </div>
           </div>      
           <div class="form-group"><button class="btn btn-primary btn-block" type="submit" [disabled]="!loginForm.valid"
-              style="width:90%;margin-left:5%">Sign up</button></div>
+              style="width:90%;margin-left:5%">Sign in</button></div>
         </form>
       </div>
     </div>
