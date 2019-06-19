@@ -23,7 +23,7 @@ exports.create = async function (req, res, next) {
 
 exports.list = async function (req, res, next) {
     try {
-        let result = await CustomerSeller.find({"vehicles_ads.interestType": "seller"}, {vehicles_ads: 1, _id: 0});
+        let result = await CustomerSeller.find({"vehicles_ads.interestType": "seller"}, {"vehicles_ads.$": 1, _id: 0});
         let newResult = [];
         result.forEach((v, i) => {
             v.vehicles_ads.forEach((val, index) => {

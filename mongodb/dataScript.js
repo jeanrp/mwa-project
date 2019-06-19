@@ -100,7 +100,7 @@ function generateDocument(i) {
 
 var documents = [];
 
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < 41; i++) {
     var docs = generateDocument(i);
     documents.push(docs); 
 }
