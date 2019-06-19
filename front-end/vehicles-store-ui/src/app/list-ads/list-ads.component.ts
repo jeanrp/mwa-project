@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CustomerSellerService} from '../services/customer-seller.service';
+import {VehiclesAd} from "../models/VehiclesAd";
 
 @Component({
   selector: 'app-list-ads',
@@ -23,5 +24,9 @@ export class ListAdsComponent implements OnInit {
 
       this.vehicles_ads = JSON.parse(JSON.stringify(data.vehicles_ads));
     });
+  }
+
+  updateList($vehicles: string) {
+    this.vehicles_ads = JSON.parse($vehicles);
   }
 }

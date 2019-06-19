@@ -1,7 +1,4 @@
 <div style="margin-top:30px;">
     <h2 style="margin-bottom:30px;">My Vehicles</h2>
  
-<app-vehicle-ads-information [vehicles_ads]="vehicles_ads" [interestType]="'seller'"></app-vehicle-ads-information>
-
-
-</div>
+<app-vehicle-ads-information [vehicles_ads]="vehicles_ads" (newVehiclesAds)="updateList($event)" [interestType]="'seller'"></app-vehicle-ads-information>

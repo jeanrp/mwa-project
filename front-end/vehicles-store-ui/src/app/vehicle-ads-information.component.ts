@@ -1,12 +1,13 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output} from '@angular/core';
 import {VehiclesAdsService} from "./services/vehicles-ads.service";
-// import {VehiclesAds} from "./models/VehiclesAd";
+import {VehiclesAd} from "./models/VehiclesAd";
 import {Router} from "@angular/router";
+import {EventEmitter} from '@angular/core';
+
 
 @Component({
   selector: 'app-vehicle-ads-information',
   template: `
-
     <div *ngFor="let vehicle of vehicles_ads">
       <div class="card mb-3" style="max-width: 840px;" appReturnSpecificCustomerByParam
            [currentInterestType]="vehicle.interestType" [interestTypeRequested]="interestType">
@@ -66,19 +67,28 @@ import {Router} from "@angular/router";
 })
 export class VehicleAdsInformationComponent implements OnInit {
 
-  @Input() vehicles_ads;
+  @Input() vehicles_ads: VehiclesAd[];
   @Input() interestType;
+  @Output() newVehiclesAds = new EventEmitter();
 
   constructor(private vehiclesAdsService: VehiclesAdsService, private router: Router) {
   }
+
 
   delete(id) {
     this.vehiclesAdsService.removeVehicleAd(id)
       .subscribe(data => {
           console.log(data);
-          // this.vehicles_ads = vehiclesAdsService.getAll();
-          this.router.navigate([''], { skipLocationChange: true });
-          this.router.navigate(['show-my-vehicles-ads']);
+          const user = localStorage.getItem('user');
+          this.vehicles_ads = this.vehicles_ads.filter((v) => {
+              return v._id !== id;
+            }
+          );
+          this.newVehiclesAds.emit(JSON.stringify(this.vehicles_ads));
+
+          // this.vehicles_ads = this.vehiclesAdsService.getVehicleByOwner(user._id);
+          // this.router.navigate([''], {skipLocationChange: true});
+          // this.router.navigate(['show-my-vehicles-ads']);
         },
         error => {
           console.log(error);
