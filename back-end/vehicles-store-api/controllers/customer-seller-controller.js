@@ -4,8 +4,7 @@ var ObjectId = require('mongodb').ObjectID;
 
 exports.create = async function (req, res, next) {
     try {
-
-        // console.log("HEY IM HERE")
+ 
         var customerSeller = new CustomerSeller(
             {
                 _id: new ObjectId(),
