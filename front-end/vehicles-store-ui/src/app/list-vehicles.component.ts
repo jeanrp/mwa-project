@@ -7,6 +7,15 @@ import { flatMap } from 'rxjs/operators';
 @Component({
   selector: 'app-list-vehicles',
   template: `
+
+  
+  <div *ngIf="vehicles">
+    <app-search-bar [vehicles]="vehicles" (newVehicle)="updateVehicles($event)"></app-search-bar>
+  </div>
+  <div class="row count" *ngIf="vehicles">
+      <strong>{{ vehicles.length }}</strong> &nbsp; vehicles advertisements found
+  </div>
+    
   <div  *ngFor="let vehicle of vehicles | slice : startPage:paginationLimit" class="card" style="width: 18rem;">
 
   <slideshow [height]="'180px'"
@@ -32,6 +41,16 @@ import { flatMap } from 'rxjs/operators';
      </div>
   `,
   styles: [`
+
+      .count{
+            margin-left:50px;
+            font-size:20px;
+            line-height: 2em;
+            margin-bottom:15px;
+      }
+
+      .count strong{ font-size:25px;}
+    
       .card {
           float:left;
           margin-left:50px;
@@ -86,5 +105,7 @@ export class ListVehiclesComponent implements OnInit {
     this.paginationLimit = Number(this.paginationLimit) + 6;
   }
 
-
+  updateVehicles(newVehicles: string) { 
+    this.vehicles = JSON.parse(newVehicles);
+  }
 }
