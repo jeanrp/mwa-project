@@ -3,22 +3,29 @@ import {BaseService} from './base.service';
 import {CustomerModel} from '../models/CustomerModel';
 import {VehiclesAd} from '../models/VehiclesAd';
 import {HttpClient} from '@angular/common/http';
-import {UserLoginModel} from '../models/UserLoginModel';
+import {Subject} from 'rxjs';
+import {tap} from "rxjs/operators";
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class VehiclesAdsService extends BaseService {
-
-
   constructor(private http: HttpClient) {
     super();
   }
 
+  private _refreshVehiclesAds$ = new Subject<void>();
+
+  get refreshVehiclesAds$() {
+    return this._refreshVehiclesAds$;
+  }
+
+
   getAllAds() {
     return this.http.get<VehiclesAd[]>(this.baseUrl + 'vehicles-ads');
   }
+
 
   getVehicleById(id: string) {
     return this.http.get<VehiclesAd>(this.baseUrl + 'vehicles-ads' + '/' + id);
@@ -32,7 +39,12 @@ export class VehiclesAdsService extends BaseService {
 
   removeVehicleAd(vehicleAdId: string) {
     const user = JSON.parse(localStorage.getItem('user'));
-    return this.http.delete(this.baseUrl + 'vehicles-ads/' + user._id + '/remove/' + vehicleAdId);
+    return this.http.delete(this.baseUrl + 'vehicles-ads/' + user._id + '/remove/' + vehicleAdId)
+      .pipe(
+        tap(() => {
+          this.refreshVehiclesAds$.next();
+        })
+      );
   }
 
 
@@ -41,4 +53,7 @@ export class VehiclesAdsService extends BaseService {
   }
 
 
+  getVehicleByOwner(id: string) {
+    return this.http.get<VehiclesAd[]>(this.baseUrl + 'vehicles-ads');
+  }
 }
