@@ -16,6 +16,8 @@ import {FileUploader, FileSelectDirective} from 'ng2-file-upload';
 
 export class AidComponent implements OnInit {
   private base64textString: String = "";
+  years: [] = [2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000, 1999, 1998, 1997, 1996, 1995, 1994, 1993, 1992, 1991];
+
 
 
   public uploader: FileUploader = new FileUploader({
@@ -34,6 +36,7 @@ export class AidComponent implements OnInit {
   fuels = ['gas', 'diesel', 'hybrid', 'electric'];
   colors = ['black', 'blue', 'brown', 'green', 'grey', 'orange', 'purple', 'red', 'silver', 'white', 'yellow', 'custom'];
   conditions = ['new', 'line new', 'excellent', 'good', 'fair', 'salvage'];
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -54,7 +57,7 @@ export class AidComponent implements OnInit {
       fuel: ['', Validators.required],
       color: ['', Validators.required],
       transmission: ['', Validators.required],
-      year: ['', Validators.required],
+      year: [''],
       description: ['', Validators.required],
       price: ['', Validators.required],
       title: ['', Validators.required],
@@ -63,18 +66,35 @@ export class AidComponent implements OnInit {
       images: [[]]
     });
 
-    this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
+    this.uploader.onAfterAddingFile = (file) => {
+      file.withCredentials = false;
+    };
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       console.log('FileUpload:uploaded:', item, status, response);
     };
   }
+
+  public findInvalidControls() {
+    const invalid = [];
+    const controls = this.addForm.controls;
+    for (const name in controls) {
+      if (controls[name].invalid) {
+        invalid.push(name);
+      }
+    }
+    return invalid;
+  }
+
 
   onSubmit() {
     this.submitted = true;
     const today = new Date();
     this.addForm.value.creationDate = today;
     console.log(this.addForm.value);
-    if (!this.addForm.valid) {
+    console.log('Valid form ' + this.addForm.valid);
+    this.findInvalidControls();
+
+    if (this.addForm.valid) {
       console.log('valid form');
       this.vehiclesAdsService.addVehicleAd(this.addForm.value)
         .subscribe(data => {
@@ -89,7 +109,7 @@ export class AidComponent implements OnInit {
     const files = evt.target.files;
     const file = files[0];
 
-    if (files && file) { 
+    if (files && file) {
       const reader = new FileReader();
       reader.onload = this._handleReaderLoaded.bind(this);
       reader.readAsBinaryString(file);
