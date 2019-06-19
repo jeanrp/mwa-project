@@ -63,6 +63,7 @@
             <div *ngIf="this.addForm.controls.price.errors.required">Price is required</div>
           </div>
         </div>
+
       </div>
       <div class="col-sm-6">
         <b>Details: </b>
@@ -85,10 +86,7 @@
           </select>
         </div>
         <div class="form-group">
-          <select class="custom-select" formControlName="fuel">
-            <option value="" disabled>Choose your fuel:</option>
-            <option *ngFor="let fuel of fuels" [ngValue]="fuel">{{fuel}}</option>
-          </select>
+
         </div>
         <div class="form-group">
           <select class="custom-select" formControlName="color">
@@ -96,7 +94,21 @@
             <option *ngFor="let color of colors" [ngValue]="color">{{color}}</option>
           </select>
         </div>
+        <div class="form-group">
+          <select class="custom-select" formControlName="fuel">
+            <option value="" disabled>Choose your fuel:</option>
+            <option *ngFor="let fuel of fuels" [ngValue]="fuel">{{fuel}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <select class="custom-select" formControlName="year">
+            <option value="" disabled>Choose your year:</option>
+            <option *ngFor="let year of years" [ngValue]="year">{{year}}</option>
+          </select>
+        </div>
       </div>
+
+
       <div class="form-group">
         <label>Image:</label>
         <input type="file" id="filePicker" (change)="handleFileSelect($event)" multiple>
