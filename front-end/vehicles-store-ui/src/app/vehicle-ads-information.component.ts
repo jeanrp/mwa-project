@@ -51,10 +51,6 @@ import {EventEmitter} from '@angular/core';
                 <div class="row">
                   <div class="col-sm-3" style="text-align: right"><strong>Condition : </strong></div>
                   <div class="col-sm-3"> {{ vehicle.condition   }} </div>
-                  <div class="col-sm-3" style="text-align: right"> Delete this?</div>
-                  <div class="col-sm-3">
-                    <button class="btn btn-danger" (click)="delete(vehicle._id)">X</button>
-                  </div>
                 </div>
               </div>
             </div>
