@@ -16,7 +16,7 @@ import {FileUploader, FileSelectDirective} from 'ng2-file-upload';
 
 export class AidComponent implements OnInit {
   private base64textString: String = "";
-  years: [] = [2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000, 1999, 1998, 1997, 1996, 1995, 1994, 1993, 1992, 1991];
+  years  = [2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000, 1999, 1998, 1997, 1996, 1995, 1994, 1993, 1992, 1991];
 
 
 
@@ -93,9 +93,10 @@ export class AidComponent implements OnInit {
     console.log(this.addForm.value);
     console.log('Valid form ' + this.addForm.valid);
     this.findInvalidControls();
+   
 
     if (this.addForm.valid) {
-      console.log('valid form');
+      console.log('valid form'); 
       this.vehiclesAdsService.addVehicleAd(this.addForm.value)
         .subscribe(data => {
           this.router.navigate(['show-my-vehicles-ads']);

@@ -6,10 +6,10 @@ var ObjectId = require('mongodb').ObjectID;
 
 exports.create = async function (req, res, next) {
     try {
+        console.log(req.params.id);
         await CustomerSeller.findByIdAndUpdate(req.params.id, {
             $push: {
-                vehicles_ads:
-                    {_id: new ObjectId(), ...req.body}
+                vehicles_ads: {_id: new ObjectId(), ...req.body}
             }
         });
         res.json({
@@ -39,8 +39,7 @@ exports.list = async function (req, res, next) {
 };
 
 exports.details = async function (req, res, next) {
-    try {
-        console.log("HEEEEEEEEEEI");
+    try { 
         console.log(req.params.id);
         let result = await CustomerSeller.findOne({"vehicles_ads._id": ObjectId(req.params.id)});
         console.log(result);
