@@ -11,7 +11,7 @@ export class ReturnSpecificCustomerByParamDirective implements OnInit {
   constructor(private elementRef: ElementRef, private renderer2: Renderer2) {
   }
 
-  ngOnInit() {    
+  ngOnInit() {
     if (this.currentInterestType == this.interestTypeRequested)
       this.showElement();
     else

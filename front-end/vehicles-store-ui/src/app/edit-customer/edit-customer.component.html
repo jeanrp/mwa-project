@@ -1,93 +1,94 @@
-<div class="col-md-3">
-    <h2 class="text-center">Edit Customer</h2>
-    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+  <h1 class="text-center" style="margin-top: 40px; margin-bottom: 25px;">Edit Customer</h1>
+  <div class="row">
+    <div class="col-sm-6">
       <div class="form-group">
         <label>FirstName:</label>
-        <input type="text" formControlName="firstName" placeholder="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && firstName?.errors }">
+        <input type="text" formControlName="firstName" placeholder="firstName" class="form-control"
+               [ngClass]="{ 'is-invalid': submitted && firstName?.errors }">
         <div *ngIf="submitted && firstName?.errors">
           <div *ngIf="firstName?.errors.required">firstName is required</div>
         </div>
       </div>
-  
       <div class="form-group">
         <label>LastName:</label>
-        <input type="text" formControlName="lastName" placeholder="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && lastName?.errors }">
+        <input type="text" formControlName="lastName" placeholder="lastName" class="form-control"
+               [ngClass]="{ 'is-invalid': submitted && lastName?.errors }">
         <div *ngIf="submitted && lastName?.errors">
           <div *ngIf="lastName?.errors.required">lastName is required</div>
         </div>
       </div>
-  
       <div class="form-group">
         <label>PhoneNumber:</label>
-        <input type="text" formControlName="phone" placeholder="phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && phone?.errors }">
+        <input type="text" formControlName="phone" placeholder="phone" class="form-control"
+               [ngClass]="{ 'is-invalid': submitted && phone?.errors }">
         <div *ngIf="submitted && phone?.errors">
           <div *ngIf="phone?.errors.required">phone is required</div>
         </div>
       </div>
-  
       <div class="form-group">
-          <label>Email:</label>
-          <input type="text" formControlName="email" placeholder="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && email?.errors }">
-          <div *ngIf="submitted && email?.errors">
-            <div *ngIf="email?.errors.required">email is required</div>
-          </div>
+        <label>Email:</label>
+        <input type="text" formControlName="email" placeholder="email" class="form-control"
+               [ngClass]="{ 'is-invalid': submitted && email?.errors }">
+        <div *ngIf="submitted && email?.errors">
+          <div *ngIf="email?.errors.required">email is required</div>
+        </div>
       </div>
-
       <div class="form-group">
-          <label>PassWord:</label>
-          <input type="password" formControlName="password" placeholder="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && password?.errors }">
-          <div *ngIf="submitted && password?.errors">
-            <div *ngIf="password?.errors.required">passWord is required</div>
-          </div>
+        <label>PassWord:</label>
+        <input type="password" formControlName="password" placeholder="password" class="form-control"
+               [ngClass]="{ 'is-invalid': submitted && password?.errors }">
+        <div *ngIf="submitted && password?.errors">
+          <div *ngIf="password?.errors.required">passWord is required</div>
+        </div>
       </div>
-
       <div class="form-group">
         <label>Birth Date:</label>
-        <input type="text" formControlName="birthDate" placeholder="birthDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && birthDate?.errors }">
+        <input type="text" formControlName="birthDate" placeholder="birthDate" class="form-control"
+               [ngClass]="{ 'is-invalid': submitted && birthDate?.errors }">
         <div *ngIf="submitted && birthDate?.errors">
           <div *ngIf="birthDate?.errors.required">birthDate is required</div>
         </div>
-    </div>
-
-     
-  
-        <div formGroupName="address">
-            <h3>Address:</h3>
-             <div class="form-group">
-         
-             <div class="form-group">
-           <label>Street:</label>
-           <input type="text" formControlName="street" placeholder="street" class="form-control" [ngClass]="{ 'is-invalid': submitted && street?.errors }">
-           <div *ngIf="submitted && street?.errors">
-             <div *ngIf="street?.errors.required">street is required</div>
-           </div>
-           </div>
-           <div class="form-group">
-             <label>City:</label>
-             <input type="text" formControlName="city" placeholder="city" class="form-control" [ngClass]="{ 'is-invalid': submitted && city?.errors }">
-             <div *ngIf="submitted && city?.errors">
-               <div *ngIf="city?.errors.required">city is required</div>
-             </div>
-           </div>
-           <div class="form-group">
-               <label>State:</label>
-               <input type="text" formControlName="state" placeholder="state" class="form-control" [ngClass]="{ 'is-invalid': submitted && state?.errors }">
-               <div *ngIf="submitted && state?.errors">
-                 <div *ngIf="state?.errors.required">state is required</div>
-               </div>
-             </div>
-             <div class="form-group">
-             <label>Zipcode:</label>
-         <input type="text" formControlName="zipcode" placeholder="zipcode" class="form-control" [ngClass]="{ 'is-invalid': submitted && zipcode?.errors }">
-         <div *ngIf="submitted && zipcode?.errors">
-           <div *ngIf="zipcode?.errors.required">zipcode is required</div>
-         </div>
-        </div>
-       </div>
       </div>
-
-      <button type="submit"  class="btn btn-info">Update</button>
-    </form>
+    </div>
+    <div class="col-sm-6">
+      <div formGroupName="address">
+        <div class="form-group">
+          <div class="form-group">
+            <label>Street:</label>
+            <input type="text" formControlName="street" placeholder="street" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && street?.errors }">
+            <div *ngIf="submitted && street?.errors">
+              <div *ngIf="street?.errors.required">street is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>City:</label>
+            <input type="text" formControlName="city" placeholder="city" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && city?.errors }">
+            <div *ngIf="submitted && city?.errors">
+              <div *ngIf="city?.errors.required">city is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>State:</label>
+            <input type="text" formControlName="state" placeholder="state" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && state?.errors }">
+            <div *ngIf="submitted && state?.errors">
+              <div *ngIf="state?.errors.required">state is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Zipcode:</label>
+            <input type="text" formControlName="zipcode" placeholder="zipcode" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && zipcode?.errors }">
+            <div *ngIf="submitted && zipcode?.errors">
+              <div *ngIf="zipcode?.errors.required">zipcode is required</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  
-  
+  <button type="submit" style="margin-bottom: 50px" class="btn btn-info">Update</button>
+</form>

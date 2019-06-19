@@ -12,7 +12,7 @@ router.get('/:id', vehiclesAds.details);
 
 router.patch('/:id', vehiclesAds.update);
 
-router.delete('/:id/vehicle_ad/:vehicle_id', vehiclesAds.delete);
+router.delete('/:id/remove/:vehicle_id', vehiclesAds.delete);
 
 
 module.exports = router;
