@@ -12,8 +12,7 @@ import { EventEmitter } from '@angular/core';
   selector: 'app-search-bar',
   template: `
 
-  <div class="row search-bar">
- 
+  <div class="row search-bar"> 
             <label for="" class="price-label">Price: </label>
                 <ng5-slider [(value)]="minValue"
                 [(highValue)]="maxValue"

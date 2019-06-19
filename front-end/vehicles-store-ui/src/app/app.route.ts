@@ -11,19 +11,22 @@ import { VehicleDetailsComponent } from './vehicle-details.component';
 import {ProposalComponent} from "./proposal/proposal.component"
 import {InteresingVehiclesComponent} from "./interesing-vehicles/interesing-vehicles.component"
 import { ListAdsComponent } from './list-ads/list-ads.component';
+import { AuthGuardService } from './guards/auth-guard';
+import { UnauthorizedComponent } from './unauthorized.component';
 
 const MY_ROUTES: Routes = [
     { path: '', redirectTo: 'vehicles-ads', pathMatch: 'full' },
     { path: 'vehicles-ads', component: ListVehiclesComponent },
     { path: 'register', component: CustomerComponent },
-    { path: 'edit-profile', component: EditCustomerComponent },
-    { path: 'show-proposal', component: ProposalComponent },
-    { path: 'show-interesting-vehicles', component: InteresingVehiclesComponent },
-    { path: 'show-my-vehicles-ads', component: ListAdsComponent },
+    { path: 'edit-profile', component: EditCustomerComponent, canActivate: [AuthGuardService] },
+    { path: 'show-proposal', component: ProposalComponent, canActivate: [AuthGuardService] },
+    { path: 'show-interesting-vehicles', component: InteresingVehiclesComponent, canActivate: [AuthGuardService]  },
+    { path: 'show-my-vehicles-ads', component: ListAdsComponent, canActivate: [AuthGuardService]  },
     { path: 'login', component: LoginComponent },
-    { path: 'logout', component: LogoutComponent },
-    { path: 'add-ad', component: AidComponent },
+    { path: 'logout', component: LogoutComponent, canActivate: [AuthGuardService] },
+    { path: 'add-ad', component: AidComponent, canActivate: [AuthGuardService] },
     { path: 'vehicles-ads/:id', component: VehicleDetailsComponent },
+    { path: 'unauthorized', component: UnauthorizedComponent },
     { path: 'error', component: ErrorComponent },
     { path: '**', redirectTo: '/' }
 

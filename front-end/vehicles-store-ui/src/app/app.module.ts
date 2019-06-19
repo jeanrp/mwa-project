@@ -36,12 +36,17 @@ import { VehicleAdsInformationComponent } from './vehicle-ads-information.compon
 import { ReturnSpecificCustomerByParamDirective } from './return-specific-customer-by-param.directive';
 import { SearchBarComponent } from './search-bar.component';
 import { Ng5SliderModule } from 'ng5-slider';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { AuthGuardService } from './guards/auth-guard';
+import { UnauthorizedComponent } from './unauthorized.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomerComponent,
     EditCustomerComponent,
+    SearchBarComponent,
     ErrorComponent,
     ListVehiclesComponent,
     NavComponent,
@@ -62,7 +67,8 @@ import { Ng5SliderModule } from 'ng5-slider';
     PhonePipe,
     StrReplacePipe,
     VehicleAdsInformationComponent,
-    ReturnSpecificCustomerByParamDirective
+    ReturnSpecificCustomerByParamDirective,
+    UnauthorizedComponent
   ],
   imports: [
     BrowserModule,
@@ -75,9 +81,11 @@ import { Ng5SliderModule } from 'ng5-slider';
       timeOut: 3000,
       preventDuplicates: true
     }),
-    myRoutes
+    myRoutes,
+    Ng5SliderModule,
+    NgbModule
   ],
-  providers: [VehiclesAdsService, ProposalService, CustomerSellerService, LoginService, { provide: HTTP_INTERCEPTORS, useClass: AuthorizationInterceptor, multi: true}],  
+  providers: [VehiclesAdsService, ProposalService, CustomerSellerService, AuthGuardService, LoginService, { provide: HTTP_INTERCEPTORS, useClass: AuthorizationInterceptor, multi: true}],  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

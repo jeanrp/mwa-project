@@ -40,10 +40,11 @@ exports.list = async function (req, res, next) {
 
 exports.details = async function (req, res, next) {
     try {
+        console.log("HEEEEEEEEEEI");
         console.log(req.params.id);
-        let result = await CustomerSeller.find({"vehicles_ads._id": ObjectId(req.params.id)});
+        let result = await CustomerSeller.findOne({"vehicles_ads._id": ObjectId(req.params.id)});
         console.log(result);
-        res.json(result[0].vehicles_ads);
+        res.json(result.vehicles_ads);
     } catch (error) {
         console.log(error);
         return next(err);

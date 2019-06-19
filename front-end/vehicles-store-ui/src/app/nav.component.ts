@@ -26,23 +26,28 @@ import { LoginService } from './services/login.service';
               <a class="nav-link" *ngIf="loginService.isUserLoggedIn()" [routerLink]="[ '/add-ad' ]">Announce Vehicle</a>
             </li>
             <li class="nav-item active">
-            <a class="nav-link" *ngIf="loginService.isUserLoggedIn()" [routerLink]="[ '/edit-profile' ]">Edit Profile <span class="sr-only">(current)</span></a>
-          </li> 
+          </li>   
+      
+          
+                
+            <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown" *ngIf="loginService.isUserLoggedIn()">
+            <button class="btn btn-primary mr-2" id="dropdownManual" ngbDropdownAnchor (focus)="myDrop.open()">Vehicles</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownManual">
+              <button ngbDropdownItem [routerLink]="[ '/show-interesting-vehicles' ]" (click)="$event.stopPropagation(); myDrop.open();">Requested Vehicles</button>  
+              <button ngbDropdownItem [routerLink]="[  '/show-my-vehicles-ads' ]" (click)="$event.stopPropagation(); myDrop.open();">My Vehicles</button>  
 
-          <li class="nav-item active">
-          <a class="nav-link" *ngIf="loginService.isUserLoggedIn()" [routerLink]="[ '/show-proposal' ]">Proposals <span class="sr-only">(current)</span></a>
-        </li> 
+            </div> 
+        </div>
 
-        <li class="nav-item active">
-          <a class="nav-link" *ngIf="loginService.isUserLoggedIn()" [routerLink]="[ '/show-interesting-vehicles' ]">Requested Vehicles <span class="sr-only">(current)</span></a>
-        </li> 
 
-            <li class="nav-item active">
-              <a class="nav-link" *ngIf="loginService.isUserLoggedIn()" [routerLink]="[ '/show-my-vehicles-ads' ]">My Vehicles <span class="sr-only">(current)</span></a>
-            </li> 
-            <li class="nav-item">
-              <a class="nav-link" *ngIf="loginService.isUserLoggedIn()" [routerLink]="[ '/logout' ]">Sign out</a>
-            </li>
+                   
+          <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown" *ngIf="loginService.isUserLoggedIn()">
+              <button class="btn btn-primary mr-2" id="dropdownManual" ngbDropdownAnchor (focus)="myDrop.open()">{{loginService.getUserLoggedIn().email }}</button>
+              <div ngbDropdownMenu aria-labelledby="dropdownManual">
+              <button ngbDropdownItem [routerLink]="[  '/show-proposal' ]" (click)="$event.stopPropagation(); myDrop.open();">Proposals</button>
+                <button ngbDropdownItem [routerLink]="[ '/logout' ]" (click)="$event.stopPropagation(); myDrop.open();">Logout</button>  
+              </div> 
+          </div>
           </ul>
           
         </div>
@@ -60,16 +65,50 @@ import { LoginService } from './services/login.service';
    .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
     color : white;
   }  
+  .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: rgb(11, 35, 84) !important;
+    border-color: rgb(11, 35, 84) !important;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus {
+   box-shadow: 0 0 0 0.2rem rgb(11, 35, 84) !important;
+}
+.btn.focus, .btn:focus {
+  outline: 0; 
+  box-shadow: 0; 
+}
+.btn-primary:active {
+  color: #fff;
+  background-color: rgb(11, 35, 84) !important;
+    border-color: rgb(11, 35, 84) !important;
+}
+.btn-primary {
+  color: #fff;
+  background-color: rgb(11, 35, 84) !important;
+    border-color: rgb(11, 35, 84) !important;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: rgb(11, 35, 84) !important;
+    border-color: rgb(11, 35, 84) !important;
+}
+
+
+
+
     #navbarText { position:absolute; right: 0;}`]
 })
 export class NavComponent implements OnInit {
 
-  isUserLoggedIn: boolean = false;
+  isUserLoggedIn: boolean = false; 
 
+  
   constructor(private loginService: LoginService) { }
 
   ngOnInit() {
-
+ 
   }
-
+ 
 }

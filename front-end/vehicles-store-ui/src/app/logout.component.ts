@@ -4,7 +4,7 @@ import { LoginService } from './services/login.service';
 @Component({
   selector: 'app-logout',
   template: `
-     <div class="container">
+     <div class="container" style="margin-left: 30%;margin-top: 15%;">
        <h1>You are logged out</h1>
          <p>Thank you for using the application</p> 
      </div>

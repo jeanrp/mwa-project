@@ -68,9 +68,10 @@ export class VehicleDetailsComponent implements OnInit {
     this.route.params.subscribe(params => {
       customerSellerService.getCustomerVehicleByCustomerId(params["id"]).subscribe(data => {
                var dataJson = JSON.parse(JSON.stringify(data));
-               this.vehicle = dataJson[0].vehicles_ads[0];
-               console.log(this.vehicle);
-               this.user = dataJson[0]; 
+               this.vehicle = dataJson.vehicles_ads[0];
+              //  console.log(this.vehicle);
+               console.log(dataJson);
+               this.user = dataJson; 
       });
     });
   }
