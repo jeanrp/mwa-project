@@ -10,7 +10,6 @@ export class InteresingVehiclesComponent implements OnInit {
   customerId: string;
   vehicles_ads: any[] = [];
 
-
   constructor(private customerService: CustomerSellerService) { }
 
   ngOnInit() {
