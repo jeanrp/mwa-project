@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild, ElementRef, Input, Output } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input, Output, Renderer2 } from '@angular/core';
 import { Options, ChangeContext, PointerType } from 'ng5-slider';
 import { FormControl } from '@angular/forms';
 import { fromEvent } from 'rxjs';
-import { map, filter, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { map, filter, debounceTime, distinctUntilChanged, debounce } from 'rxjs/operators';
 import { VehiclesAd } from './models/VehiclesAd';
 import { EventEmitter } from '@angular/core';
+import { rendererTypeName } from '@angular/compiler';
 
 
 
@@ -30,32 +31,11 @@ import { EventEmitter } from '@angular/core';
             <option *ngFor="let year of years" [value]="year">{{year}}</option>
         </select>
  
-  </div>
-
-  <div class="loading" *ngIf="isSearching">
-        <div class="col-12 text-center">
-
-            <h4>Searching ... </h4>
-
-        </div>
-    </div>
+  </div>  
 
   <hr />
   `,
-  styles: [`
-       
-      .loading{ 
-          width: 120px;
-          height: 120px; 
-          display: block;
-          background: url("/img/loader.svg") no-repeat center;
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          margin: -60px 0 0 -60px;
-          -webkit-animation: loader 2.5s linear 0s infinite;
-          animation: loader 2.5s linear 0s infinite;
-      }
+  styles: [`  
      
       .price-label{
         margin-right:15px;padding-top: 20px;
@@ -70,7 +50,7 @@ import { EventEmitter } from '@angular/core';
       .ng5-slider, .ng5-slider-bar-wrapper {  
         width: 250px !important;
       }
-
+    
       #year
       {
         max-width:200px !important;
@@ -102,14 +82,15 @@ export class SearchBarComponent implements OnInit {
 
   @ViewChild('brandInput', { static: false }) brandInput: ElementRef;
   @ViewChild('modelInput', { static: false }) modelInput: ElementRef;
+  @ViewChild('loading', { static: false }) loading: ElementRef;
+  @ViewChild('loadingText', { static: false }) loadingText: ElementRef;
   @ViewChild('year', { static: false }) year: ElementRef;
 
   @Input() vehicles: VehiclesAd[];
   @Output() newVehicle = new EventEmitter();
   initialVehicles: VehiclesAd[];
 
-
-  constructor() { }
+  constructor(private renderer : Renderer2) { }
 
   ngOnInit() {
     this.initialVehicles = this.vehicles;
@@ -125,8 +106,8 @@ export class SearchBarComponent implements OnInit {
     fromEvent(this.brandInput.nativeElement, 'keyup').pipe(
       map((event: any) => {
         return event.target.value;
-      })
-      , distinctUntilChanged()
+      }), 
+      distinctUntilChanged()
     ).subscribe((text: string) => {
       this.searchVehicles(this.minValue, this.maxValue, this.year.nativeElement.value, this.brandInput.nativeElement.value, this.modelInput.nativeElement.value);
     });
@@ -142,7 +123,8 @@ export class SearchBarComponent implements OnInit {
   }
 
   searchVehicles(minPrice: number, maxPrice: number, year: string, brand: string, model: string) {
-    this.isSearching = true;
+
+
 
     let vehic = [...this.initialVehicles];
 
@@ -163,12 +145,10 @@ export class SearchBarComponent implements OnInit {
         return v.year == parseInt(year);
       });
     }
+ 
 
     this.newVehicle.emit(JSON.stringify(vehic));
-
-
-    this.isSearching = false;
-  }
+    }
 
 
 
