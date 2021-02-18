@@ -13,6 +13,7 @@ _" Application to buy vehicles near you
 - [NodeJS] 
 - [ExpressJS]
 - [MongoDB]
+- [Mongoose]
 - [MongoDB Atlas Database]
 
 ### Frontend
