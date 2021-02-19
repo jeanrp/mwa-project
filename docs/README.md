@@ -16,5 +16,10 @@ _" Application to buy vehicles near you
 - [Mongoose]
 - [MongoDB Atlas Database]
 
+
 ### Frontend
 - [Angular]
+- [Bootstrap]
+
+### Additional
+- [JWT Authentication]
