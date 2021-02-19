@@ -7,9 +7,9 @@ _" Application to buy vehicles near you
 "._
  
   	
-## Built with
+## Built with MEAN Stack
 
-### Backend
+### Backend 
 - [NodeJS] 
 - [ExpressJS]
 - [MongoDB]
